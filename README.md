@@ -8,6 +8,10 @@ The goal of LoveLane is to bring together people who are looking for love, frien
 - People who need help finding compatible partners
 
 ### 🔥Features
+- Create account
+- Edit profile
+- Chat
+- View Profile
 - Suggest people with the same hobbies
 - Suggest people based on distance
 - Suggest people based on age
