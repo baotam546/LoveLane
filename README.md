@@ -30,3 +30,5 @@ The goal of LoveLane is to bring together people who are looking for love, frien
   <img src="./Your First Project/HomePage.png" width="30%">
   <img src="./Your First Project/Chat.png" width="30%">
 </p>
+### ▶️**Database Design**
+![image](/Your%20First%20Project/database.png)
