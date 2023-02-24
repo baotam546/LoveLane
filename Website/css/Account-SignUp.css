@@ -1,0 +1,111 @@
+body {
+    background-color: cyan;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.brand-name {
+    width: 250px;
+}
+
+#page-name{
+    text-align: center;
+    clear: both;
+}
+
+.sign-up {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    height: 100%;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up input:not(#submit) {
+    width: 96%;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.sign-up p {
+    text-align: center;
+}
+
+#submit {
+    display: block;
+    padding: 7px 30px;
+    margin: auto;
+    box-shadow: 2px 3px;
+    border: 2px solid black;
+    margin-bottom: 2%;
+}
+
+.create-account {
+    margin-left: 3%;
+}
+
+.create-account input[name='Name'],
+.create-account input[name='Birthday'] {
+    padding: 5px;
+    width: 230px;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+}
+
+.pictures{
+    float: right;
+    width: 40%;
+}
+
+.pictures span{
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 1px;
+}
+
+.pictures input{
+    display: none;
+} 
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.pictures label{
+    margin-top: 111%;
+    margin-left: 75%;
+}
+
+.left-input{
+    display: inline-block;
+}
+
+.option-title{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.specification{
+    margin-bottom: 2%;
+    width: 50%;
+}
