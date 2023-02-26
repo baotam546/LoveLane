@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <img src="../Your First Project/icon.png" alt="icon" class="brand-name">
+    <img src="../images/icon.png" alt="icon" class="brand-name">
     <hr>
     <div class="create-account">
         <h2 id="page-name">Create Account</h2>
