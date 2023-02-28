@@ -1,7 +1,7 @@
 #  💓LoveLane - Assigment PRJ301
 ## Requirement
 ### 🔥Name of the system
-![image](/Your%20First%20Project/Lovelane.png)
+![image](/images/Lovelane.png)
 ### 🔥Purpose of the system
 The goal of LoveLane is to bring together people who are looking for love, friendship, or meaningful relationships and provide them with an easy and convenient way to connect with each other.
 ### 🔥Who use the system
@@ -18,18 +18,18 @@ The goal of LoveLane is to bring together people who are looking for love, frien
 - Match people who like each others
 ## 🚀Design
 ### :arrow_forward:**SiteMap** 
-![images](/Your%20First%20Project/Sitemap.png)
+![images](/images/Sitemap.png)
 ### ▶️:**Wireframe**
 <p>
-  <img src="./Your First Project/Website Sample.png" width="30%">
-  <img src="./Your First Project/SignUp.png" width="30%">
-  <img src="./Your First Project/Create Profile.png" width="30%">
+  <img src="./images/Website Sample.png" width="30%">
+  <img src="./images/SignUp.png" width="30%">
+  <img src="./images/Create Profile.png" width="30%">
 </p>
 <p>
-  <img src="./Your First Project/LogIn.png" width="30%">
-  <img src="./Your First Project/HomePage.png" width="30%">
-  <img src="./Your First Project/Chat.png" width="30%">
+  <img src="./images/LogIn.png" width="30%">
+  <img src="./images/HomePage.png" width="30%">
+  <img src="./images/Chat.png" width="30%">
 </p>
 
 ### ▶️**Database Design**
-![images](/Your%20First%20Project/database.png)
+![images](/images/database.png)
