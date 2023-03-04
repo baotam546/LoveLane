@@ -9,14 +9,18 @@ body {
     width: 250px;
 }
 
-#page-name{
+#page-name {
     text-align: center;
     clear: both;
 }
 
-.sign-up {
+.sign-up{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transform: translate(0%,55%);
+    height: 256px;
 }
 
 form {
@@ -29,10 +33,11 @@ form {
 }
 
 .sign-up input:not(#submit) {
-    width: 96%;
+    width: 95%;
     margin-bottom: 20px;
     padding: 5px;
     border: 2px solid black;
+    
 }
 
 .sign-up p {
@@ -52,8 +57,7 @@ form {
     margin-left: 3%;
 }
 
-.create-account input[name='Name'],
-.create-account input[name='Birthday'] {
+.left-input input:not([name='Sex']) {
     padding: 5px;
     width: 230px;
 }
@@ -63,12 +67,13 @@ form {
     justify-content: center;
 }
 
-.pictures{
+.pictures {
     float: right;
     width: 40%;
+    position: relative;
 }
 
-.pictures span{
+.pictures span {
     display: inline-block;
     width: 150px;
     height: 200px;
@@ -77,9 +82,30 @@ form {
     margin: 10px 1px;
 }
 
-.pictures input{
+.pictures img{
+    display: inline-block;
+    width: 150px;
+    height: 200px;
     display: none;
-} 
+    position: absolute;
+    border-radius: 5px;
+}
+
+.pictures input {
+    display: none;
+}
+
+.pictures button{
+    display: none;
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-left: 120px;
+}
 
 .custom-file-upload {
     border: 1px solid #ccc;
@@ -91,21 +117,35 @@ form {
     cursor: pointer;
 }
 
-.pictures label{
+.pictures label {
     margin-top: 111%;
     margin-left: 75%;
 }
 
-.left-input{
+.left-input {
     display: inline-block;
 }
 
-.option-title{
+.option-title {
     margin: 0px;
     font-weight: bold;
+    position: relative;
 }
 
-.specification{
+.specification {
     margin-bottom: 2%;
     width: 50%;
+}
+
+.hobby {
+    width: 30%;
+    height: 120px;
+    background-color: white;
+    overflow: scroll;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.hobby ::-webkit-scrollbar {
+    display: none;
 }

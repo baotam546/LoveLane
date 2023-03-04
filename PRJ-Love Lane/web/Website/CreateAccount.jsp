@@ -7,20 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoveLane</title>
-    <link rel="stylesheet" href="./css/Account-SignUp.css">
+    <link rel="stylesheet" href="css/Account-SignUp.css">
 </head>
 
 <body>
-    <img src="../images/icon.png" alt="icon" class="brand-name">
+    <img src="images/LovelaneLogo.png" alt="icon" class="brand-name">
     <hr>
     <div class="create-account">
         <h2 id="page-name">Create Account</h2>
-        <form action="./CreateAccount.jsp">
+        <form action="./CreateAccount">
             <div class="left-input">
                 <label for="Name">Name</label><br>
                 <input type="text" name="Name"><br>
                 <label for="Birthday">Birthday</label><br>
                 <input type="date" name="Birthday"><br>
+                <label for="Phone">Phone Number</label><br>
+                <input type="text" name="Phone"><br>
                 <label for="Sex">Sex</label><br>
                 <input type="radio" name="Sex" value="male">Male
                 <input type="radio" name="Sex" value="female">Female
@@ -28,34 +30,66 @@
             </div>
             <div class="pictures">
                 <p class="option-title">Profile Pictures</p>
-                <span><label class="custom-file-upload">
-                        <input type="file" name="picture"/>+
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+                        <input type="file" name="picture1" accept="image/*" onchange="previewImages()" />+
+                    </label>
+
+                </span>
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+
+                        <input type="file" name="picture2" accept="image/*" onchange="previewImages()" /> +
+
                     </label></span>
-                <span><label class="custom-file-upload">
-                        <input type="file" />+
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+                        <input type="file" name="picture3" accept="image/*" onchange="previewImages()" />+
                     </label></span>
-                <span><label class="custom-file-upload">
-                        <input type="file" />+
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+                        <input type="file" name="picture4" accept="image/*" onchange="previewImages()" />+
                     </label></span>
-                <span><label class="custom-file-upload">
-                        <input type="file" />+
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+                        <input type="file" name="picture5" accept="image/*" onchange="previewImages()" />+
                     </label></span>
-                <span><label class="custom-file-upload">
-                        <input type="file" />+
-                    </label></span>
-                <span><label class="custom-file-upload">
-                        <input type="file" />+
-                    </label></span>
+
+                <span>
+                    <img src="" alt="">
+                    <button onclick="removeImage(this)" type="button">-</button>
+                    <label class="custom-file-upload">
+                        <input type="file" name="picture6" accept="image/*" onchange="previewImages()" />+
+                    </label>
+                </span>
+
             </div>
             <h2 id="page-name">Option</h2>
             <div class="specification">
                 <p class="option-title">Hobbies</p>
-                <input type="checkbox" id="music" name="hobby" value="music">
-                <label for="music"> Music</label><br>
-                <input type="checkbox" id="swimming" name="hobby" value="swimming">
-                <label for="swimming"> Swimming</label><br>
-                <input type="checkbox" id="fashion" name="hobby" value="fashion">
-                <label for="fashion"> Fashion</label><br>
+                <div class="hobby">
+                    <input type="checkbox" id="music" name="hobby" value="music">
+                    <label for="music"> Music </label><br>
+                    <input type="checkbox" id="swimming" name="hobby" value="swimming">
+                    <label for="swimming"> Swimming </label><br>
+                    <input type="checkbox" id="fashion" name="hobby" value="fashion">
+                    <label for="fashion"> Fashion </label><br>
+                </div>
             </div>
             <div class="specification">
                 <p class="option-title">Sex-Oriented</p>
@@ -82,7 +116,7 @@
         </form>
 
     </div>
-
+    <script src="js/CreateAccount.js"></script>
 </body>
 
 </html>
