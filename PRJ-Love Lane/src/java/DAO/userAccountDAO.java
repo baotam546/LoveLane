@@ -82,7 +82,7 @@ public class userAccountDAO {
     public userAccountDTO login (String username, String pass){
         userAccountDTO userDTO =null;
         String sql="select email from User_Account  "+
-                "where email= ? and password = ?";
+                " where email= ? and password = ?";
          try{
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -94,10 +94,12 @@ public class userAccountDAO {
             if(rs.next()){
                 userDTO= new userAccountDTO();
                 userDTO.setEmail(username);
+                return userDTO;
             }
+            
         } catch (SQLException ex) {
             System.out.println("Query Student error!" + ex.getMessage());
-        }return userDTO;
+        }return null;
     } 
       
     public void updateUser(String firstName, String lastName, String email, String password,String description
@@ -165,5 +167,11 @@ public class userAccountDAO {
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    public static void main(String[] args) {
+            Connection conn = DBUtils.getConnection();
+            System.out.println(conn==null);
+            
     }
 }
