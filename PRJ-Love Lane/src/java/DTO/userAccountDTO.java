@@ -12,21 +12,22 @@ import java.util.Date;
  * @author ACER
  */
 public class userAccountDTO {
-    String account_ID;
+    
+    int account_ID;
     String first_name;
     String last_name;
     String email;
     String password;
     String description;
-    String gender_ID;
+    int gender_ID;
     Date DOB;
-    String location_ID;
+    int location_ID;
     String phone;
 
     public userAccountDTO() {
     }
 
-    public userAccountDTO(String account_ID, String first_name, String last_name, String email, String password, String description, String gender_ID, Date DOB, String location_ID, String phone) {
+    public userAccountDTO(int account_ID, String first_name, String last_name, String email, String password, String description, int gender_ID, Date DOB, int location_ID, String phone) {
         this.account_ID = account_ID;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -39,11 +40,17 @@ public class userAccountDTO {
         this.phone = phone;
     }
 
-    public String getAccount_ID() {
+    public userAccountDTO(String firstName, String lastName, String email, String pass, String description, String gender_ID, Date DOB, String phone, String location) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+
+    public int getAccount_ID() {
         return account_ID;
     }
 
-    public void setAccount_ID(String account_ID) {
+    public void setAccount_ID(int account_ID) {
         this.account_ID = account_ID;
     }
 
@@ -87,14 +94,7 @@ public class userAccountDTO {
         this.description = description;
     }
 
-    public String getGender_ID() {
-        return gender_ID;
-    }
-
-    public void setGender_ID(String gender_ID) {
-        this.gender_ID = gender_ID;
-    }
-
+ 
     public Date getDOB() {
         return DOB;
     }
@@ -103,13 +103,23 @@ public class userAccountDTO {
         this.DOB = DOB;
     }
 
-    public String getLocation_ID() {
+    public int getGender_ID() {
+        return gender_ID;
+    }
+
+    public void setGender_ID(int gender_ID) {
+        this.gender_ID = gender_ID;
+    }
+
+    public int getLocation_ID() {
         return location_ID;
     }
 
-    public void setLocation_ID(String location_ID) {
+    public void setLocation_ID(int location_ID) {
         this.location_ID = location_ID;
     }
+
+  
 
     public String getPhone() {
         return phone;

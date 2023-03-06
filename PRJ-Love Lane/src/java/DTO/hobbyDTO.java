@@ -10,42 +10,54 @@ package DTO;
  * @author ACER
  */
 public class hobbyDTO {
-    String name;
-    String accountID;
-    String hobbyID;
-
-    public hobbyDTO(String name, String accountID, String hobbyID) {
-        this.name = name;
-        this.accountID = accountID;
-        this.hobbyID = hobbyID;
-    }
+    int id;
+    int name;
+    int accountID;
+    int hobbyID;
 
     public hobbyDTO() {
     }
 
-    public String getName() {
+    public hobbyDTO( int name, int accountID, int hobbyID) {
+        
+        this.name = name;
+        this.accountID = accountID;
+        this.hobbyID = hobbyID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
-    public String getAccountID() {
+    public int getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
+    public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
 
-    public String getHobbyID() {
+    public int getHobbyID() {
         return hobbyID;
     }
 
-    public void setHobbyID(String hobbyID) {
+    public void setHobbyID(int hobbyID) {
         this.hobbyID = hobbyID;
     }
+
+    
 
     
 }

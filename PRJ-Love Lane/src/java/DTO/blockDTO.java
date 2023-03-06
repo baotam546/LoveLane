@@ -10,41 +10,43 @@ package DTO;
  * @author ACER
  */
 public class blockDTO {
-    String blockID;
-    String accountID;
-    String accountID_block;
+    int blockID;
+    int accountID;
+    int accountID_block;
 
     public blockDTO() {
     }
 
-    public blockDTO(String blockID, String accountID, String accountID_block) {
-        this.blockID = blockID;
+    public blockDTO( int accountID, int accountID_block) {
+        
         this.accountID = accountID;
         this.accountID_block = accountID_block;
     }
 
-    public String getBlockID() {
+    public int getBlockID() {
         return blockID;
     }
 
-    public void setBlockID(String blockID) {
+    public void setBlockID(int blockID) {
         this.blockID = blockID;
     }
 
-    public String getAccountID() {
+    public int getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
+    public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
 
-    public String getAccountID_block() {
+    public int getAccountID_block() {
         return accountID_block;
     }
 
-    public void setAccountID_block(String accountID_block) {
+    public void setAccountID_block(int accountID_block) {
         this.accountID_block = accountID_block;
     }
+
+    
     
 }

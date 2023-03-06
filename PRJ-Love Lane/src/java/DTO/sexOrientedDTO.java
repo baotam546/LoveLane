@@ -10,42 +10,44 @@ package DTO;
  * @author ACER
  */
 public class sexOrientedDTO {
-    String soID;
-    String accountID;
-    String genderID;
-
-    public sexOrientedDTO(String soID, String accountID, String genderID) {
-        this.soID = soID;
-        this.accountID = accountID;
-        this.genderID = genderID;
-    }
+    int soID;
+    int accountID;
+    int genderID;
 
     public sexOrientedDTO() {
     }
 
-    public String getSoID() {
+    public sexOrientedDTO( int accountID, int genderID) {
+        
+        this.accountID = accountID;
+        this.genderID = genderID;
+    }
+
+    public int getSoID() {
         return soID;
     }
 
-    public void setSoID(String soID) {
+    public void setSoID(int soID) {
         this.soID = soID;
     }
 
-    public String getAccountID() {
+    public int getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
+    public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
 
-    public String getGenderID() {
+    public int getGenderID() {
         return genderID;
     }
 
-    public void setGenderID(String genderID) {
+    public void setGenderID(int genderID) {
         this.genderID = genderID;
     }
+
+   
 
     
 }

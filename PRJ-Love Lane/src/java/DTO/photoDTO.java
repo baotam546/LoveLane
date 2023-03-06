@@ -12,8 +12,8 @@ import java.util.Date;
  * @author ACER
  */
 public class photoDTO {
-    String photoID;
-    String accountID;
+    int photoID;
+    int accountID;
     String link;
     String status;
     Date time_added;
@@ -21,27 +21,27 @@ public class photoDTO {
     public photoDTO() {
     }
 
-    public photoDTO(String photoID, String accountID, String link, String status, Date time_added) {
-        this.photoID = photoID;
+    public photoDTO( int accountID, String link, String status, Date time_added) {
+        
         this.accountID = accountID;
         this.link = link;
         this.status = status;
         this.time_added = time_added;
     }
 
-    public String getPhotoID() {
+    public int getPhotoID() {
         return photoID;
     }
 
-    public void setPhotoID(String photoID) {
+    public void setPhotoID(int photoID) {
         this.photoID = photoID;
     }
 
-    public String getAccountID() {
+    public int getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
+    public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
 
