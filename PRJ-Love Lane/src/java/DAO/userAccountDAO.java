@@ -25,7 +25,7 @@ public class userAccountDAO {
     public userAccountDAO() {
     }
     
-    public void insertStudent(String firstName, String lastName, String email, String password
+    public void insertUser(String firstName, String lastName, String email, String password
     ,String genderID, String location, String DOB, String phone){
         
         
@@ -54,7 +54,7 @@ public class userAccountDAO {
         ArrayList<userAccountDTO> userList = new ArrayList<>();
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareCall(Query.Query.LIST_USER);
+            PreparedStatement ps = conn.prepareStatement(Query.Query.LIST_USER);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 int id = rs.getInt(1);
