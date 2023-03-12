@@ -35,11 +35,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<%! String err; %>
-        <% err = (String) request.getAttribute("error"); 
-        if (err != null) {
-            out.print("<h2 class='error-message' style='color:red;'>"+err+"</h2"); 
-        }%>
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('https://i.pinimg.com/564x/dd/ea/75/ddea75536f4fd982e0461df4e4afd4d9.jpg');">
 			<div class="wrap-login100">
@@ -51,7 +47,13 @@
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
 					</span>
-
+	<%! String err; %>
+        <% err = (String) request.getAttribute("error"); 
+        if (err != null) {
+            out.print("<h2 class='error-message' style='color:red;'>"+err+"</h2"); 
+        }%>
+                                
+                                
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="text" name="user" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>

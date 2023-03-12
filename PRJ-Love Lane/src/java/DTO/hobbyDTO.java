@@ -11,18 +11,18 @@ package DTO;
  */
 public class hobbyDTO {
     int id;
-    int name;
+    String name;
     int accountID;
     int hobbyID;
 
     public hobbyDTO() {
     }
 
-    public hobbyDTO( int name, int accountID, int hobbyID) {
-        
+    public hobbyDTO(int id, String name, int accountID ) {
+        this.id = id;
         this.name = name;
         this.accountID = accountID;
-        this.hobbyID = hobbyID;
+
     }
 
     public int getId() {
@@ -33,11 +33,11 @@ public class hobbyDTO {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

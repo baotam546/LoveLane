@@ -17,8 +17,10 @@
         <h2 id="page-name">Create Account</h2>
         <form action="./CreateAccount">
             <div class="left-input">
-                <label for="Name">Name</label><br>
-                <input type="text" name="Name"><br>
+                <label for="Name">First Name</label><br>
+                <input type="text" name="firstName"><br>
+                <label for="Name">Last Name</label><br>
+                <input type="text" name="lastName"><br>
                 <label for="Birthday">Birthday</label><br>
                 <input type="date" name="Birthday"><br>
                 <label for="Phone">Phone Number</label><br>
@@ -26,7 +28,7 @@
                 <label for="Sex">Sex</label><br>
                 <input type="radio" name="Sex" value="male">Male
                 <input type="radio" name="Sex" value="female">Female
-                <input type="radio" name="Sex" value="Everyone">Everyone <br>
+                <input type="radio" name="Sex" value="others">Others<br>
             </div>
             <div class="pictures">
                 <p class="option-title">Profile Pictures</p>
