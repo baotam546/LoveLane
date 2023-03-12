@@ -22,9 +22,11 @@ public class Query {
     public static String UPDATE_RELATIONSHIP="UPDATE Interest_in_Relationship SET relation_ID = ? WHERE account_ID = ?";
     public static String DELETE_RELATIONSHIP="delete from Interest_in_Relationship where accountID= ?";
    
-    // Hobby
-    public static String INSERT_HOBBY = "INSERT INTO Interest_in_Hobby (hobby_ID,account_ID) value (?,?)";
-    public static String DELETE_HOBBY = "DELETE FROM Interest_in_Hobby WHERE hobby_ID =?,account_ID=?";
+    // Interest_in_Hobby
+    public static String INSERT_IIH = "INSERT INTO Interest_in_Hobby (hobby_name,account_ID) value (?,?)";
+    public static String DELETE_IIH = "DELETE FROM Interest_in_Hobby WHERE hobby_name =?,account_ID=?";
+    
+    public static String LIST_SINGLE_USER_HOBBY = "SELECT ioh.iih_ID, h.name, ioh.account_ID FROM hobby h , Interest_in_Hobby ioh WHERE h.hobby_ID = ioh.hobby_ID AND ioh.account_ID = ?";
     
     // Sex Oriented
     public static String INSERT_SO = "INSERT into Sex_Oriented (account_ID,gender_ID) value(?,?)";

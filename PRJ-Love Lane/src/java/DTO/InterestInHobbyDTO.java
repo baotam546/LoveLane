@@ -9,21 +9,24 @@ package DTO;
  *
  * @author ACER
  */
-public class hobbyDTO {
+public class InterestInHobbyDTO {
     int id;
-    String name;
+
     int accountID;
-    int hobbyID;
-
-    public hobbyDTO() {
+    String hobbyName;
+    
+    public InterestInHobbyDTO() {
     }
 
-    public hobbyDTO(int id, String name, int accountID ) {
+    public InterestInHobbyDTO(int id, int accountID, String hobbyName) {
         this.id = id;
-        this.name = name;
         this.accountID = accountID;
-
+        this.hobbyName = hobbyName;
     }
+
+
+
+
 
     public int getId() {
         return id;
@@ -31,14 +34,6 @@ public class hobbyDTO {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAccountID() {
@@ -49,15 +44,14 @@ public class hobbyDTO {
         this.accountID = accountID;
     }
 
-    public int getHobbyID() {
-        return hobbyID;
+    public String getHobbyName() {
+        return hobbyName;
     }
 
-    public void setHobbyID(int hobbyID) {
-        this.hobbyID = hobbyID;
+    public void setHobbyName(String hobbyName) {
+        this.hobbyName = hobbyName;
     }
 
-    
 
-    
+
 }

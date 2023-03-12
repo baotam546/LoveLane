@@ -17,14 +17,14 @@ import java.util.logging.Logger;
  *
  * @author ACER
  */
-public class relationshipDAO {
-    public void insertRelationship(int userID, int relationID){
+public class InterestInRelationshipDAO {
+    public void insertRelationship(int userID, String relationName){
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(Query.INSERT_RELATIONSHIP);
+            PreparedStatement ps = conn.prepareStatement(Query.INSERT_IIR);
             
             ps.setInt(1, userID);
-            ps.setInt(2, relationID);
+            ps.setString(2, relationName);
             ps.executeUpdate();
             ps.close();
             conn.close();
@@ -35,13 +35,13 @@ public class relationshipDAO {
     
     
     
-    public void updateRelationship(int relationID, int userID){
+    public void updateRelationship(String relationName, int userID){
         
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(Query.UPDATE_RELATIONSHIP);
+            PreparedStatement ps = conn.prepareStatement(Query.UPDATE_IIR);
             
-            ps.setInt(1, relationID);
+            ps.setString(1, relationName);
             ps.setInt(2, userID);
             ps.executeUpdate();
             ps.close();
@@ -51,11 +51,12 @@ public class relationshipDAO {
         }
     }
     
-    public void deleteRelationship(int userID){
+    public void deleteRelationship(int userID, String relationName){
         try {
             Connection conn =DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(Query.DELETE_RELATIONSHIP);
+            PreparedStatement ps = conn.prepareStatement(Query.DELETE_IIR);
             ps.setInt(1, userID);
+            ps.setString(2, relationName);
             ps.executeUpdate();
             ps.close();
             conn.close();

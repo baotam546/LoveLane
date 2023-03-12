@@ -36,10 +36,22 @@ public class CreateAccountController extends HttpServlet {
             throws ServletException, IOException {
         try {
             response.setContentType("text/html;charset=UTF-8");
+            String email =(String) request.getAttribute("user");
+            String password =(String) request.getAttribute("password");
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String birthdayS =request.getParameter("Birthday");
             Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
+            String phone = request.getParameter("Phone");
+            String sex = request.getParameter("Sex");
+            int genderID = 0;
+            if(sex == "male"){
+                genderID = 1;
+            }else if(sex == "female"){
+                genderID = 2;
+            }else
+                genderID =3;
+            
             
             
         } catch (ParseException ex) {

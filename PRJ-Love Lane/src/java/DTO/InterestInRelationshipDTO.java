@@ -9,19 +9,21 @@ package DTO;
  *
  * @author ACER
  */
-public class relationshipDTO {
+public class InterestInRelationshipDTO {
     int relationshipID;
     int accountID;
-    int relationID;
+    String relationName;
 
-    public relationshipDTO() {
+    public InterestInRelationshipDTO() {
     }
 
-    public relationshipDTO(int accountID, int relationID) {
-        
+    public InterestInRelationshipDTO(int relationshipID, int accountID, String relationName) {
+        this.relationshipID = relationshipID;
         this.accountID = accountID;
-        this.relationID = relationID;
+        this.relationName = relationName;
     }
+
+   
 
     public int getRelationshipID() {
         return relationshipID;
@@ -39,16 +41,13 @@ public class relationshipDTO {
         this.accountID = accountID;
     }
 
-    public int getRelationID() {
-        return relationID;
+    public String getRelationName() {
+        return relationName;
     }
 
-    public void setRelationID(int relationID) {
-        this.relationID = relationID;
+    public void setRelationName(String relationName) {
+        this.relationName = relationName;
     }
 
-   
-
-   
     
 }
