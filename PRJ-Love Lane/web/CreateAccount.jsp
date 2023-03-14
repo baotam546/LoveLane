@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="DTO.HobbyDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +84,9 @@
 
             </div>
             <h2 id="page-name">Option</h2>
+            <%! List<HobbyDTO> list; %>
+            
+            
             <div class="specification">
                 <p class="option-title">Hobbies</p>
                 <div class="hobby">

@@ -47,11 +47,7 @@
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
 					</span>
-	<%! String err; %>
-        <% err = (String) request.getAttribute("error"); 
-        if (err != null) {
-            out.print("<h2 class='error-message' style='color:red;'>"+err+"</h2"); 
-        }%>
+
                                 
                                 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
@@ -81,6 +77,13 @@
 						</a>
 					</div>
 				</form>
+        
+        	<%! String err; %>
+        <% err = (String) request.getAttribute("error"); 
+        if (err != null) {
+            out.print("<h6 class='error-message' style='color:red;'>"+err+"</h6>"); 
+        }%>
+        
 			</div>
 		</div>
 	</div>

@@ -34,31 +34,31 @@ public class InterestInHobbyDAO {
         } catch (Exception e) {
         }
     }
-//    public ArrayList<InterestInHobbyDTO> getUserListHobby(){
-//        ArrayList<InterestInHobbyDTO> hobbyList = new ArrayList<>();
-//       
-//        try {
-//            Connection conn = DBUtils.getConnection();
-//            PreparedStatement ps = conn.prepareStatement(Query.LIST_SINGLE_USER_HOBBY);
-//            ResultSet rs = ps.executeQuery();
-//            while(rs.next()){
-//                int id = rs.getInt(1);
-//                int 
-//                int user_ID = rs.getInt(3);
-//                
-//                InterestInHobbyDTO userHobby = new InterestInHobbyDTO(id, name, user_ID);
-//                hobbyList.add(userHobby);
-//                rs.close();
-//                ps.close();
-//                conn.close();
-//                
-//            }
-//            return hobbyList;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(InterestInHobbyDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return null;
-//}
+    public ArrayList<InterestInHobbyDTO> getUserListHobby(){
+        ArrayList<InterestInHobbyDTO> hobbyList = new ArrayList<>();
+       
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(Query.LIST_SINGLE_USER_HOBBY);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                int user_ID = rs.getInt(3);
+                
+                InterestInHobbyDTO userHobby = new InterestInHobbyDTO(id, user_ID, name);
+                hobbyList.add(userHobby);
+                rs.close();
+                ps.close();
+                conn.close();
+                
+            }
+            return hobbyList;
+        } catch (SQLException ex) {
+            Logger.getLogger(InterestInHobbyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+}
     
     public void deleteHobby(String hobbyName,int accountID){
         try {
