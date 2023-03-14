@@ -5,13 +5,18 @@
  */
 package Controller;
 
+import DAO.HobbyDAO;
+import DTO.HobbyDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +41,13 @@ public class CreateAccountController extends HttpServlet {
             throws ServletException, IOException {
         try {
             response.setContentType("text/html;charset=UTF-8");
+            
+            HobbyDAO dao = new HobbyDAO();
+            ArrayList<HobbyDTO> hobbyList = dao.getHobbyList();
+            request.setAttribute("list", hobbyList);
+            RequestDispatcher rd = request.getRequestDispatcher("CreateAccount.jsp");
+            rd.forward(request, response);
+            
             String email =(String) request.getAttribute("user");
             String password =(String) request.getAttribute("password");
             String firstName = request.getParameter("firstName");
@@ -51,6 +63,7 @@ public class CreateAccountController extends HttpServlet {
                 genderID = 2;
             }else
                 genderID =3;
+            
             
             
             

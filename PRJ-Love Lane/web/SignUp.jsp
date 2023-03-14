@@ -18,7 +18,7 @@
         <img src="./images/LovelaneLogo.png" alt="icon" class="brand-name">
         <hr>        
         <div class="sign-up">
-            <form action="./SignUp" autocomplete="off" method="get">
+            <form action="./SignUpController" autocomplete="off" method="get">
                 <h2 id="title">Sign Up</h2>
                 
                 <%! String err; %>

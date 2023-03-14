@@ -49,8 +49,9 @@ public class SignUpController extends HttpServlet {
                     request.getRequestDispatcher("/SignUpController").forward(request, response);
                 }else{
                     HttpSession session = request.getSession(true);
+                    userDTO = new userAccountDTO();
                         session.setAttribute("usersession", userDTO);                   
-                        response.sendRedirect("CreateAccount.jsp");
+                        response.sendRedirect("CreateAccountController");
                 }
             }
     }

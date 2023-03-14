@@ -322,17 +322,20 @@ public class SuggestDAO {
         return 0;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         SuggestDAO dao = new SuggestDAO();
-        System.out.println(dao.listAccountsID());
-        System.out.println(dao.listSO(3));
-        System.out.println(dao.listHobbies(3));
-        System.out.println(dao.listRelation(3));
-        System.out.println(dao.listBlocks(3));
-        System.out.println(dao.FilterByGender(dao.listAccountsIDExcept(5), dao.listSO(3)));
-        System.out.println(dao.FilterBlock(dao.listAccountsIDExcept(3), dao.listBlocks(3)));
-        System.out.println(dao.listAccountsIDExcept(3));
-        System.out.println(dao.insertToSuggest(3, 5, 50));
-        dao.suggest();
+//        System.out.println(dao.listAccountsID());
+//        System.out.println(dao.listSO(3));
+//        System.out.println(dao.listHobbies(3));
+//        System.out.println(dao.listRelation(3));
+//        System.out.println(dao.listBlocks(3));
+//        System.out.println(dao.FilterByGender(dao.listAccountsIDExcept(5), dao.listSO(3)));
+//        System.out.println(dao.FilterBlock(dao.listAccountsIDExcept(3), dao.listBlocks(3)));
+//        System.out.println(dao.listAccountsIDExcept(3));
+//        System.out.println(dao.insertToSuggest(3, 5, 50));
+        while(true){
+            dao.suggest();
+            Thread.sleep(60000);
+        }
     }
 }
