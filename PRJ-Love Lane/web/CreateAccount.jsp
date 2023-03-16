@@ -1,3 +1,4 @@
+<%@page import="DTO.LocationDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
@@ -44,56 +45,51 @@
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
 
                     </span>
                     
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
 
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" /> +
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" /> +
 
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">x</button>
+                        <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
                     </span>
-                    <input type="hidden" value="" name="image">
-                    <input type="hidden" value="" name="image">
-                    <input type="hidden" value="" name="image">
-                    <input type="hidden" value="" name="image">
-                    <input type="hidden" value="" name="image">
-                    <input type="hidden" value="" name="image">
+
                 </div>
                 <h2 id="page-name">Option</h2>
                 <%! ArrayList<HobbyDTO> list;%>
@@ -103,9 +99,9 @@
                     <p class="option-title">Hobbies</p>
                     <div class="hobby">
                         <%
-                            for (HobbyDTO hobby : list) {
-                                out.print("<input type='checkbox' name='hobby' id= '" + hobby.getName() + "' value='" + hobby.getName() + "'>");
-                                out.print("<label for='" + hobby.getName() + "'>" + hobby.getName() + "</label><br>");
+                            for(HobbyDTO hobby : list){
+                                out.print("<input type='checkbox' name='hobby' id= '"+hobby.getName()+"' value='"+hobby.getName()+"'>");
+                                out.print("<label for='"+hobby.getName()+"'>"+hobby.getName()+"</label><br>");
 
                             }
                         %>
@@ -134,7 +130,6 @@
                         <label for="long-term"> Long-term Dating</label><br>
                         <input type="checkbox" id="hookups" name="interest" value="hookups">
                         <label for="hookups"> Hookups</label><br>
-                    </div>
                 </div>
                 <input type="submit" name="" id="submit">
 
