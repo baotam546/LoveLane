@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
+@WebServlet(name = " HomePageController ", urlPatterns = {"/HomePageController"})
+@MultipartConfig
 public class HomePageController extends HttpServlet {
 
     /**
@@ -28,9 +32,11 @@ public class HomePageController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String filename;
             File myObj = new File("filename.png");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
@@ -41,7 +47,7 @@ public class HomePageController extends HttpServlet {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
