@@ -172,5 +172,5 @@ form {
 #description{
     height:500px;
     width:500px;
-    word-break: break-word;
+    word-break: break-all;
 }

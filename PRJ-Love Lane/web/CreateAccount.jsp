@@ -45,7 +45,7 @@
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
@@ -54,7 +54,7 @@
                     
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
 
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" /> +
@@ -63,28 +63,28 @@
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
                             <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
@@ -130,6 +130,22 @@
                         <label for="long-term"> Long-term Dating</label><br>
                         <input type="checkbox" id="hookups" name="interest" value="hookups">
                         <label for="hookups"> Hookups</label><br>
+                    </div>
+                </div>
+                <div class="specification">
+                    <p class="option-title">Location</p>
+                    <div class="location">
+                        <%! ArrayList<LocationDTO> locationList;%>
+                    <% locationList=(ArrayList<LocationDTO>) request.getAttribute("locationList");%>
+
+                        <%
+                            for( LocationDTO location: locationList){
+                                out.print("<input type='checkbox' name='location' id= '"+location.getName()+"' value='"+location.getName()+"'>");
+                                out.print("<label for='"+location.getName()+"'>"+location.getName()+"</label><br>");
+
+                            }
+                        %>
+                    </div>
                 </div>
                 <input type="submit" name="" id="submit">
 

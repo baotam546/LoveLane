@@ -55,7 +55,7 @@ public class SuggestDAO {
 
                 otherLocation = getLocation(otherID);
                 if (Location == otherLocation) {
-                    point += 50;
+                    point += 30;
                 }
 
                 insertToSuggest(currentID, otherID, point);

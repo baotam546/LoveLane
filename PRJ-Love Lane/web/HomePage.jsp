@@ -41,7 +41,7 @@
 	</div>
 </div>
 <div class="input-form">
-	<input type="button" onclick="location.href = 'SignUp.jsp';" value="Join LoveLane">
+	<input type="submit" onclick="location.href = 'SignUp.jsp';" value="Join LoveLane">
 
 </div>
 
