@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.HobbyDAO;
+import DAO.SexOriented;
 import DAO.userAccountDAO;
 import DTO.HobbyDTO;
 import DTO.userAccountDTO;

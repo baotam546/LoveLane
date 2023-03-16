@@ -36,6 +36,7 @@
                     <input type="radio" name="Sex" value="male">Male
                     <input type="radio" name="Sex" value="female">Female
                     <input type="radio" name="Sex" value="others">Others<br>
+                    <input type="text" name="Description"><br>
                 </div>
                 <div class="pictures">
                     <p class="option-title">Profile Pictures</p>

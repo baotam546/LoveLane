@@ -5,8 +5,16 @@
  */
 package Controller;
 
+import DAO.SexOriented;
+import DAO.userAccountDAO;
+import DTO.userAccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,18 +38,32 @@ public class InsertUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet InsertUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet InsertUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+         String email =(String) request.getAttribute("user");
+            String password =(String) request.getAttribute("password");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String birthdayS =request.getParameter("Birthday");
+        try {
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
+        } catch (ParseException ex) {
+            Logger.getLogger(InsertUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+            String phone = request.getParameter("Phone");
+            String sex = request.getParameter("Sex");
+            int genderID = 0;
+            if(sex == "male"){
+                genderID = 1;
+            }else if(sex == "female"){
+                genderID = 2;
+            }else
+                genderID =3;
+            
+            String[] hobbyList =request.getParameterValues("hobby");
+            String SexOriented = request.getParameter("oriented");
+            String [] photo = request.getParameterValues("picture");
+            String [] interest = request.getParameterValues("interest");
+            userAccountDAO UserDAO = new userAccountDAO();
+            UserDAO.insertUser(firstName, lastName, email, password, email, email, sex, phone);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
