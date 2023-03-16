@@ -45,7 +45,7 @@ public class InsertUser extends HttpServlet {
             String birthdayS =request.getParameter("Birthday");
             String description = request.getParameter("description");
         try {
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(birthdayS);
         } catch (ParseException ex) {
             Logger.getLogger(InsertUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,8 +64,10 @@ public class InsertUser extends HttpServlet {
             String [] photo = request.getParameterValues("picture");
             String [] interest = request.getParameterValues("interest");
             userAccountDAO UserDAO = new userAccountDAO();
-            userAccountDTO UserDTO = (UserDTO) UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
-            request.setAttribute("currentUser", user);
+            UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
+            userAccountDTO UserDTO = new userAccountDTO(firstName, lastName, email, password, description, genderID, birthdayS, description);
+            request.setAttribute("currentUser", UserDTO);
+            request.getRequestDispatcher("/InsertMore").forward(request, response);
             
     }
 

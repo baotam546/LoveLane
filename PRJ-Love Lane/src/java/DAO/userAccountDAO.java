@@ -65,10 +65,10 @@ public class userAccountDAO {
                 String password = rs.getString(5);
                 String description = rs.getString(6);
                 int gender = rs.getInt(7);
-                Date dob = rs.getDate(8);
+                String dob = rs.getString(8);
                 String location = rs.getString(9);
                 
-                userAccountDTO ua = new userAccountDTO(id, firstName, lastName, email, password, description, gender, dob, location);
+                userAccountDTO ua = new userAccountDTO(firstName, lastName, email, password, description, gender, dob, location);
                 userList.add(ua);
                 rs.close();
                 ps.close();
@@ -144,7 +144,7 @@ public class userAccountDAO {
     public userAccountDTO getUserByID(int id){
         ArrayList<userAccountDTO> listUser = new ArrayList<>();
         try {
-            String sql="select first_name, last_name, description, gender_ID, DOB, Location_ID, Phone,email,password"+
+            String sql="select first_name, last_name, description, gender_ID, DOB, Location_ID,email,password"+
             "from User_Account where id = ?";
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -159,7 +159,7 @@ public class userAccountDAO {
             String email=rs.getString(8);
             String pass=rs.getString(9);
             
-            userAccountDTO us= new userAccountDTO(firstName, lastName, email, pass, description, gender_ID, DOB, phone,location);
+            userAccountDTO us= new userAccountDTO(firstName, lastName, email, pass, description, gender_ID, DOB,location);
             listUser.add(us);
             return us;
             
