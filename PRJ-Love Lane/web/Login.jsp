@@ -37,7 +37,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('https://i.pinimg.com/564x/dd/ea/75/ddea75536f4fd982e0461df4e4afd4d9.jpg');">
+		<div class="container-login100" style="background-color:#0820ff;">
 			<div class="wrap-login100">
                             <form class="login100-form validate-form" action="login" method="post">
 					<span class="login100-form-logo">
