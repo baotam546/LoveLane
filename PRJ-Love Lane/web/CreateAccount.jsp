@@ -22,7 +22,7 @@
         <hr>
         <div class="create-account">
             <h2 id="page-name">Create Account</h2>
-            <form action="./CreateAccount" method="post">
+            <form action="CreateAccount" method="post">
                 <div class="left-input">
                     <label for="Name">First Name</label><br>
                     <input type="text" name="firstName"><br>
@@ -36,6 +36,8 @@
                     <input type="radio" name="Sex" value="male">Male
                     <input type="radio" name="Sex" value="female">Female
                     <input type="radio" name="Sex" value="others">Others<br>
+                    <label for="Description">Description</label><br>
+                    <input type="text" class="description" name="Description"><br>
                 </div>
                 <div class="pictures">
                     <p class="option-title">Profile Pictures</p>
