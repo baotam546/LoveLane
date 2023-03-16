@@ -27,6 +27,14 @@
         <servlet-name>CreateAccountController</servlet-name>
         <servlet-class>Controller.CreateAccountController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertUser</servlet-name>
+        <servlet-class>Controller.InsertUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomePageController</servlet-name>
+        <servlet-class>Controller.HomePageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signUpServlet</servlet-name>
         <url-pattern>/signUp</url-pattern>
@@ -50,6 +58,14 @@
     <servlet-mapping>
         <servlet-name>CreateAccountController</servlet-name>
         <url-pattern>/CreateAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertUser</servlet-name>
+        <url-pattern>/InsertUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomePageController</servlet-name>
+        <url-pattern>/HomePageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
