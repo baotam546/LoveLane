@@ -118,8 +118,8 @@
                     <label for="male"> Male</label>
                     <input type="checkbox" id="female" name="oriented" value="female">
                     <label for="female"> Female</label>
-                    <input type="checkbox" id="everyone" name="oriented" value="everyone">
-                    <label for="everyone"> Everyone</label>
+                    <input type="checkbox" id="others" name="oriented" value="others">
+                    <label for="everyone"> Others</label>
                 </div>
                 <div class="specification">
                     <p class="option-title">Interest in relationship</p>
