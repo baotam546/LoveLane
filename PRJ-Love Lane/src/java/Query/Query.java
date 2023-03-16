@@ -31,6 +31,9 @@ public class Query {
     // Hobby
     public static String LIST_HOBBY = "SELECT hobby_ID, name FROM hobby";
     
+    // Location
+    public static String LIST_LOCATION = "SELECT Location_ID, Name FROM Location";
+    
     // Sex Oriented
     public static String INSERT_SO = "INSERT into Sex_Oriented (account_ID,gender_ID) value(?,?)";
     public static String UPDATE_SO = "UPDATE Sex_Oriented SET gender_ID = ? WHERE account_ID = ?";

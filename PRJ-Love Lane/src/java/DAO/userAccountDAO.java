@@ -26,7 +26,7 @@ public class userAccountDAO {
     }
     
     public void insertUser(String firstName, String lastName, String email, String password
-    ,String genderID, String location, String DOB, String phone){
+    ,int genderID, String location, String DOB, String phone){
         
         
         try {
@@ -37,7 +37,7 @@ public class userAccountDAO {
             ps.setString(2, lastName);
             ps.setString(3, email);
             ps.setString(4, password);
-            ps.setString(5,genderID);
+            ps.setInt(5,genderID);
             ps.setString(6, location);
             ps.setString(7, DOB);
             ps.setString(8, phone);

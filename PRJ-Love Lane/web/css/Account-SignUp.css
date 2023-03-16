@@ -151,6 +151,19 @@ form {
     display: none;
 }
 
+.location{
+    width: 30%;
+    height: 120px;
+    background-color: white;
+    overflow: scroll;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.location ::-webkit-scrollbar {
+    display: none;
+}
+
 .login form{
     height: 100%;
     width: 211px;

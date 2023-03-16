@@ -43,6 +43,7 @@ public class InsertUser extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String birthdayS =request.getParameter("Birthday");
+            String description = request.getParameter("description");
         try {
             Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
         } catch (ParseException ex) {
@@ -63,7 +64,7 @@ public class InsertUser extends HttpServlet {
             String [] photo = request.getParameterValues("picture");
             String [] interest = request.getParameterValues("interest");
             userAccountDAO UserDAO = new userAccountDAO();
-            UserDAO.insertUser(firstName, lastName, email, password, email, email, sex, phone);
+            UserDAO.insertUser(firstName, lastName, email, password, genderID, description, birthdayS, phone);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

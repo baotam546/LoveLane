@@ -1,3 +1,4 @@
+<%@page import="DTO.LocationDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
@@ -36,7 +37,23 @@
                     <input type="radio" name="Sex" value="male">Male
                     <input type="radio" name="Sex" value="female">Female
                     <input type="radio" name="Sex" value="others">Others<br>
+                    <label for="Description">Description</label><br>
                     <input type="text" name="Description"><br>
+                    <%! ArrayList<LocationDTO> locationList;%>
+                    <% locationList=(ArrayList<LocationDTO>) request.getAttribute("locationList");%>
+                    <div class="specification">
+                    <div class="location">
+                        <%
+                            for( LocationDTO location: locationList){
+                                out.print("<input type='checkbox' name='location' id= '"+location.getName()+"' value='"+location.getName()+"'>");
+                                out.print("<label for='"+location.getName()+"'>"+location.getName()+"</label><br>");
+
+                            }
+                        %>
+
+
+                    </div>
+                    </div>
                 </div>
                 <div class="pictures">
                     <p class="option-title">Profile Pictures</p>
