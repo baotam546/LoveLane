@@ -21,13 +21,13 @@ public class userAccountDTO {
     String description;
     int gender_ID;
     Date DOB;
-    int location_ID;
-    String phone;
+    String location;
+
 
     public userAccountDTO() {
     }
 
-    public userAccountDTO(int account_ID, String first_name, String last_name, String email, String password, String description, int gender_ID, Date DOB, int location_ID, String phone) {
+    public userAccountDTO(int account_ID, String first_name, String last_name, String email, String password, String description, int gender_ID, Date DOB, String location) {
         this.account_ID = account_ID;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -36,8 +36,8 @@ public class userAccountDTO {
         this.description = description;
         this.gender_ID = gender_ID;
         this.DOB = DOB;
-        this.location_ID = location_ID;
-        this.phone = phone;
+        this.location = location;
+
     }
 
     public userAccountDTO(String firstName, String lastName, String email, String pass, String description, String gender_ID, Date DOB, String phone, String location) {
@@ -111,23 +111,17 @@ public class userAccountDTO {
         this.gender_ID = gender_ID;
     }
 
-    public int getLocation_ID() {
-        return location_ID;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLocation_ID(int location_ID) {
-        this.location_ID = location_ID;
+    public void setLocation_ID(String location_ID) {
+        this.location = location;
     }
 
   
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    
 
    
 }

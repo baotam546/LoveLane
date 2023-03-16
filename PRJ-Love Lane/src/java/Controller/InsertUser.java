@@ -49,7 +49,7 @@ public class InsertUser extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(InsertUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-            String phone = request.getParameter("Phone");
+            String location = request.getParameter("location");
             String sex = request.getParameter("Sex");
             int genderID = 0;
             if(sex == "male"){
@@ -64,7 +64,8 @@ public class InsertUser extends HttpServlet {
             String [] photo = request.getParameterValues("picture");
             String [] interest = request.getParameterValues("interest");
             userAccountDAO UserDAO = new userAccountDAO();
-            UserDAO.insertUser(firstName, lastName, email, password, genderID, description, birthdayS, phone);
+            UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
