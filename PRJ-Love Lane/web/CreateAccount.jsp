@@ -47,7 +47,7 @@
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()"/>+
                         </label>
 
                     </span>

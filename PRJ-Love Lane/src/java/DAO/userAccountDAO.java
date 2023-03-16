@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Controller.InsertUser;
 import DBUtils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import DTO.userAccountDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,7 +71,7 @@ public class userAccountDAO {
                 Date dob = rs.getDate(8);
                 String location = rs.getString(9);
                 
-                userAccountDTO ua = new userAccountDTO(id, firstName, lastName, email, password, description, gender, dob, location);
+                userAccountDTO ua = new userAccountDTO(firstName, lastName, email, password, description, gender, dob+"", location);
                 userList.add(ua);
                 rs.close();
                 ps.close();
@@ -152,14 +155,14 @@ public class userAccountDAO {
             String firstName = rs.getString(1);
             String lastName = rs.getString(2);
             String description =rs.getString(3);
-            String gender_ID= rs.getString(4);
+            int gender_ID= rs.getInt(4);
             Date DOB = rs.getDate(5);
             String location = rs.getString(6);
             String phone= rs.getString(7);
             String email=rs.getString(8);
             String pass=rs.getString(9);
             
-            userAccountDTO us= new userAccountDTO(firstName, lastName, email, pass, description, gender_ID, DOB, phone,location);
+            userAccountDTO us= new userAccountDTO(firstName, lastName, email, pass, description, gender_ID, DOB+"",location);
             listUser.add(us);
             return us;
             

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ACER
  */
-@WebServlet(name = " HomePageController ", urlPatterns = {"/HomePageController"})
+@WebServlet(name = " HomePagController ", urlPatterns = {"/HomePagController"})
 @MultipartConfig
 public class HomePageController extends HttpServlet {
 

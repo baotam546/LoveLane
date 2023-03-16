@@ -19,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,29 +45,26 @@ public class InsertUser extends HttpServlet {
             String lastName = request.getParameter("lastName");
             String birthdayS =request.getParameter("Birthday");
             String description = request.getParameter("description");
-        try {
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
-        } catch (ParseException ex) {
-            Logger.getLogger(InsertUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
             String location = request.getParameter("location");
             String sex = request.getParameter("Sex");
             int genderID = 0;
-            if(sex == "male"){
+            if(sex.equals("male")){
                 genderID = 1;
-            }else if(sex == "female"){
+            }else if(sex.equals("female")){
                 genderID = 2;
             }else
                 genderID =3;
             
-            String[] hobbyList =request.getParameterValues("hobby");
-            String SexOriented = request.getParameter("oriented");
-            String [] photo = request.getParameterValues("picture");
-            String [] interest = request.getParameterValues("interest");
+//            String[] hobbyList =request.getParameterValues("hobby");
+//            String SexOriented = request.getParameter("oriented");
+//            String [] photo = request.getParameterValues("picture");
+//            String [] interest = request.getParameterValues("interest");
             userAccountDAO UserDAO = new userAccountDAO();
-            userAccountDTO UserDTO = (UserDTO) UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
+            userAccountDTO user = new userAccountDTO(firstName, lastName, email, password, description, genderID, birthdayS, location);
+            UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
             request.setAttribute("currentUser", user);
-            
+            HttpSession session = request.getSession(true);
+            session.setAttribute("currentUser", user);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
