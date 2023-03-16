@@ -46,7 +46,7 @@ public class SignUpController extends HttpServlet {
                 
                 if(userDTO != null){
                     request.setAttribute("error", "this username has been taken");
-                    request.getRequestDispatcher("/SignUpController").forward(request, response);
+                    request.getRequestDispatcher("SignUpController").forward(request, response);
                 }else{
                     HttpSession session = request.getSession(true);
                     userDTO = new userAccountDTO();

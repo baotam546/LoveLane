@@ -43,7 +43,6 @@ public class CreateAccountController extends HttpServlet {
         if (session != null){       
                 currentUser = (userAccountDTO) session.getAttribute("usersession");
             }
-        
         HobbyDAO hobbyDAO = new HobbyDAO();
         ArrayList<HobbyDTO> hobbyList = hobbyDAO.getHobbyList();
         request.setAttribute("hobbyList", hobbyList);

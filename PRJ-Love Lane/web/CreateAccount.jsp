@@ -22,7 +22,7 @@
         <hr>
         <div class="create-account">
             <h2 id="page-name">Create Account</h2>
-            <form action="./CreateAccount">
+            <form action="./CreateAccount" method="post">
                 <div class="left-input">
                     <label for="Name">First Name</label><br>
                     <input type="text" name="firstName"><br>
@@ -42,51 +42,56 @@
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture1" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
                         </label>
 
                     </span>
-
+                    
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
 
-                            <input type="file" name="picture2" accept="image/*" onchange="previewImages()" /> +
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" /> +
 
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture3" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture4" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture5" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
-                        <button onclick="removeImage(this)" type="button">-</button>
+                        <button onclick="removeImage(this)" type="button">x</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture6" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/png, image/gif, image/jpeg" onchange="previewImages()" />+
                         </label>
                     </span>
-
+                    <input type="hidden" value="" name="image">
+                    <input type="hidden" value="" name="image">
+                    <input type="hidden" value="" name="image">
+                    <input type="hidden" value="" name="image">
+                    <input type="hidden" value="" name="image">
+                    <input type="hidden" value="" name="image">
                 </div>
                 <h2 id="page-name">Option</h2>
                 <%! ArrayList<HobbyDTO> list;%>
@@ -96,15 +101,15 @@
                     <p class="option-title">Hobbies</p>
                     <div class="hobby">
                         <%
-                            for(HobbyDTO hobby : list){
-                                out.print("<input type='checkbox' name='hobby' id= '"+hobby.getName()+"' value='"+hobby.getName()+"'>");
-                                out.print("<label for='"+hobby.getName()+"'>"+hobby.getName()+"</label><br>");
-                                
+                            for (HobbyDTO hobby : list) {
+                                out.print("<input type='checkbox' name='hobby' id= '" + hobby.getName() + "' value='" + hobby.getName() + "'>");
+                                out.print("<label for='" + hobby.getName() + "'>" + hobby.getName() + "</label><br>");
+
                             }
                         %>
-                        
-                        
-                      
+
+
+
                     </div>
                 </div>
                 <div class="specification">
@@ -118,14 +123,16 @@
                 </div>
                 <div class="specification">
                     <p class="option-title">Interest in relationship</p>
-                    <input type="checkbox" id="new-friend" name="interest" value="new-friend">
-                    <label for="new-friend"> New Friends</label><br>
-                    <input type="checkbox" id="short-term" name="interest" value="short-term">
-                    <label for="short-term"> Short-term Dating</label><br>
-                    <input type="checkbox" id="long-term" name="interest" value="long-term">
-                    <label for="long-term"> Long-term Dating</label><br>
-                    <input type="checkbox" id="hookups" name="interest" value="hookups">
-                    <label for="hookups"> Hookups</label><br>
+                    <div class="hobby">
+                        <input type="checkbox" id="new-friend" name="interest" value="new-friend">
+                        <label for="new-friend"> New Friends</label><br>
+                        <input type="checkbox" id="short-term" name="interest" value="short-term">
+                        <label for="short-term"> Short-term Dating</label><br>
+                        <input type="checkbox" id="long-term" name="interest" value="long-term">
+                        <label for="long-term"> Long-term Dating</label><br>
+                        <input type="checkbox" id="hookups" name="interest" value="hookups">
+                        <label for="hookups"> Hookups</label><br>
+                    </div>
                 </div>
                 <input type="submit" name="" id="submit">
 

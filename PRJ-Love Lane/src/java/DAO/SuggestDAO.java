@@ -22,12 +22,13 @@ public class SuggestDAO {
     public void suggest() {
         int point = 0;
 
-        List<Integer> SO, Hobbies, Blocks, Relation;
+        List<Integer> SO, Blocks, Blocked;
+        List<String> Hobbies, Relation;
         int Location;
 
         List<Integer> UsersID = listAccountsID();
 
-        List<Integer> otherHobbies, otherRelation;
+        List<String> otherHobbies, otherRelation;
         int otherLocation;
 
         for (int currentID : UsersID) {
@@ -35,20 +36,22 @@ public class SuggestDAO {
             SO = listSO(currentID);
             Hobbies = listHobbies(currentID);
             Blocks = listBlocks(currentID);
+            Blocked = listBlocked(currentID);
             Location = getLocation(currentID);
             Relation = listRelation(currentID);
 
             List<Integer> othersID = listAccountsIDExcept(currentID);
             List<Integer> filteredIDs = FilterByGender(othersID, SO);
             filteredIDs = FilterBlock(filteredIDs, Blocks);
+            filteredIDs = FilterBlock(filteredIDs, Blocked);
 
             for (int otherID : filteredIDs) {
                 point = 0;
                 otherHobbies = listHobbies(otherID);
-                point += calculatePoint(Hobbies, otherHobbies);
+                point += calculatePointString(Hobbies, otherHobbies);
 
                 otherRelation = listRelation(otherID);
-                point += calculatePoint(Relation, otherRelation);
+                point += calculatePointString(Relation, otherRelation);
 
                 otherLocation = getLocation(otherID);
                 if (Location == otherLocation) {
@@ -65,6 +68,18 @@ public class SuggestDAO {
         for (int o1 : list1) {
             for (int o2 : list2) {
                 if (o1 == o2) {
+                    point += 10;
+                }
+            }
+        }
+        return point;
+    }
+
+    public int calculatePointString(List<String> list1, List<String> list2) {
+        int point = 0;
+        for (String o1 : list1) {
+            for (String o2 : list2) {
+                if (o1.equals(o2)) {
                     point += 10;
                 }
             }
@@ -97,7 +112,7 @@ public class SuggestDAO {
                 ps = conn.prepareStatement(sqlInsert);
             }
             ps.setInt(1, point);
-            ps.setInt(2, userID );
+            ps.setInt(2, userID);
             ps.setInt(3, otherID);
 
             ps.executeUpdate();
@@ -123,12 +138,12 @@ public class SuggestDAO {
     public List<Integer> listAccountByGender(List<Integer> genderIDs) {
         List<Integer> UsersID = new ArrayList<>();
         String SQL = null;
-        if(genderIDs.isEmpty()){
+        if (genderIDs.isEmpty()) {
             return listAccountsID();
-        } else{
-            SQL= "select account_ID\n"
-                + "from dbo.User_Account\n"
-                + "where (gender_ID = ?";
+        } else {
+            SQL = "select account_ID\n"
+                    + "from dbo.User_Account\n"
+                    + "where (gender_ID = ?";
         }
         for (int i = 1; i < genderIDs.size(); i++) {
             SQL += " or gender_ID = ?";
@@ -224,9 +239,9 @@ public class SuggestDAO {
         return UserSO;
     }
 
-    public List<Integer> listHobbies(int id) {
-        List<Integer> UserHobbies = new ArrayList<>();
-        String HobbySQL = "select ii.hobby_ID\n"
+    public List<String> listHobbies(int id) {
+        List<String> UserHobbies = new ArrayList<>();
+        String HobbySQL = "select ii.hobby_Name\n"
                 + "from dbo.User_Account u inner join dbo.Interest_in_Hobby ii\n"
                 + "						on u.account_ID=ii.account_ID\n"
                 + "where u.account_ID = ?";
@@ -238,7 +253,7 @@ public class SuggestDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                UserHobbies.add(rs.getInt(1));
+                UserHobbies.add(rs.getString(1));
             }
             rs.close();
             ps.close();
@@ -254,7 +269,7 @@ public class SuggestDAO {
         String BlockSQL = "select b.account_ID_block\n"
                 + "from dbo.User_Account u inner join dbo.[block] b\n"
                 + "						on u.account_ID=b.account_ID\n"
-                + "where u.account_ID = ?";
+                + "where b.account_ID = ?";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(BlockSQL);
@@ -274,9 +289,33 @@ public class SuggestDAO {
         return UserBlocks;
     }
 
-    public List<Integer> listRelation(int id) {
-        List<Integer> UserRelation = new ArrayList<>();
-        String RelationSQL = "select ir.relation_ID\n"
+    public List<Integer> listBlocked(int id) {
+        List<Integer> UserBlocks = new ArrayList<>();
+        String BlockSQL = "select b.account_ID\n"
+                + "from dbo.[block] b\n"
+                + "where b.account_ID_block = ?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(BlockSQL);
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                UserBlocks.add(rs.getInt(1));
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Query Student error!" + ex.getMessage());
+        }
+        return UserBlocks;
+    }
+
+    public List<String> listRelation(int id) {
+        List<String> UserRelation = new ArrayList<>();
+        String RelationSQL = "select ir.relation_Name\n"
                 + "from dbo.User_Account u inner join dbo.Interest_in_Relationship ir\n"
                 + "						on u.account_ID=ir.account_ID\n"
                 + "where u.account_ID = ?";
@@ -288,7 +327,7 @@ public class SuggestDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                UserRelation.add(rs.getInt(1));
+                UserRelation.add(rs.getString(1));
             }
             rs.close();
             ps.close();
@@ -333,7 +372,7 @@ public class SuggestDAO {
 //        System.out.println(dao.FilterBlock(dao.listAccountsIDExcept(3), dao.listBlocks(3)));
 //        System.out.println(dao.listAccountsIDExcept(3));
 //        System.out.println(dao.insertToSuggest(3, 5, 50));
-        while(true){
+        while (true) {
             dao.suggest();
             Thread.sleep(60000);
         }
