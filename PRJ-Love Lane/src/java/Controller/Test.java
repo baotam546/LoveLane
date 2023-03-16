@@ -3,10 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet;
+package Controller;
 
+import DAO.HobbyDAO;
+import DTO.HobbyDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author DELL
+ * @author ACER
  */
-public class signUpServlet extends HttpServlet {
+public class Test extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,21 +39,36 @@ public class signUpServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-
-            request.setCharacterEncoding("UTF-8");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-            if (email.trim().isEmpty() || email == null || pass.trim().isEmpty() || pass == null) {
-                request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-            } else {
-//                UserAccountDAO dao = new UserAccountDAO();
-//                dao.
-                request.getRequestDispatcher("CreateAccount.jsp").forward(request, response);
-            }
-
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            
+            HobbyDAO dao = new HobbyDAO();
+            ArrayList<HobbyDTO> hobbyList = dao.getHobbyList();
+            request.setAttribute("list", hobbyList);
+            RequestDispatcher rd = request.getRequestDispatcher("CreateAccount.jsp");
+            rd.forward(request, response);
+            
+            String email =(String) request.getAttribute("user");
+            String password =(String) request.getAttribute("password");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String birthdayS =request.getParameter("Birthday");
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
+            String phone = request.getParameter("Phone");
+            String sex = request.getParameter("Sex");
+            int genderID = 0;
+            if(sex == "male"){
+                genderID = 1;
+            }else if(sex == "female"){
+                genderID = 2;
+            }else
+                genderID =3;
+            
+            
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

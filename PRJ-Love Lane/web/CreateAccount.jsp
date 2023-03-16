@@ -90,25 +90,21 @@
                 </div>
                 <h2 id="page-name">Option</h2>
                 <%! ArrayList<HobbyDTO> list;%>
-                <%list = (ArrayList<HobbyDTO>) request.getAttribute("list");%>
+                <%list = (ArrayList<HobbyDTO>) request.getAttribute("hobbyList");%>
 
                 <div class="specification">
                     <p class="option-title">Hobbies</p>
                     <div class="hobby">
                         <%
                             for(HobbyDTO hobby : list){
-                                out.println("<input type='checkbox' name='hobby' value='"+hobby.getName()+"'>");
-                                out.println("<label for='"+hobby.getName()+"'>"+hobby.getName()+"</label><br>");
+                                out.print("<input type='checkbox' name='hobby' id= '"+hobby.getName()+"' value='"+hobby.getName()+"'>");
+                                out.print("<label for='"+hobby.getName()+"'>"+hobby.getName()+"</label><br>");
+                                
                             }
                         %>
                         
                         
-                        <input type="checkbox" id="music" name="hobby" value="music">
-                        <label for="music"> Music </label><br>
-                        <input type="checkbox" id="swimming" name="hobby" value="swimming">
-                        <label for="swimming"> Swimming </label><br>
-                        <input type="checkbox" id="fashion" name="hobby" value="fashion">
-                        <label for="fashion"> Fashion </label><br>
+                      
                     </div>
                 </div>
                 <div class="specification">

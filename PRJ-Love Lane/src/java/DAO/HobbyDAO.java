@@ -36,14 +36,22 @@ public class HobbyDAO {
                 
                 HobbyDTO hobby = new HobbyDTO(id, name);
                 hobbyList.add(hobby);
+
+            }
                 rs.close();
                 ps.close();
                 conn.close();
-            }
-            
         } catch (SQLException ex) {
             Logger.getLogger(HobbyDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return hobbyList;
+    }
+    public static void main(String[] args) {
+        HobbyDAO DAO = new HobbyDAO();
+        ArrayList<HobbyDTO> hobbyList = DAO.getHobbyList();
+        for (HobbyDTO hobby : hobbyList) {
+            System.out.println(hobby.getName());
+        }
+        
     }
 }

@@ -6,21 +6,18 @@
 package Controller;
 
 import DAO.HobbyDAO;
+import DAO.userAccountDAO;
 import DTO.HobbyDTO;
+import DTO.userAccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,37 +36,19 @@ public class CreateAccountController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            
-            HobbyDAO dao = new HobbyDAO();
-            ArrayList<HobbyDTO> hobbyList = dao.getHobbyList();
-            request.setAttribute("list", hobbyList);
-            RequestDispatcher rd = request.getRequestDispatcher("CreateAccount.jsp");
-            rd.forward(request, response);
-            
-            String email =(String) request.getAttribute("user");
-            String password =(String) request.getAttribute("password");
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            String birthdayS =request.getParameter("Birthday");
-            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthdayS);
-            String phone = request.getParameter("Phone");
-            String sex = request.getParameter("Sex");
-            int genderID = 0;
-            if(sex == "male"){
-                genderID = 1;
-            }else if(sex == "female"){
-                genderID = 2;
-            }else
-                genderID =3;
-            
-            
-            
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(CreateAccountController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        response.setContentType("text/html;charset=UTF-8");
+       
+        HttpSession session = request.getSession(false);
+        userAccountDTO currentUser = null;
+        if (session != null){       
+                currentUser = (userAccountDTO) session.getAttribute("usersession");
+            }
+        
+        HobbyDAO hobbyDAO = new HobbyDAO();
+        ArrayList<HobbyDTO> hobbyList = hobbyDAO.getHobbyList();
+        request.setAttribute("hobbyList", hobbyList);
+        request.getRequestDispatcher("CreateAccount.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
