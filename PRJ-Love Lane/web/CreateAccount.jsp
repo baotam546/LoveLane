@@ -44,7 +44,7 @@
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture1" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
 
                     </span>
@@ -54,7 +54,7 @@
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
 
-                            <input type="file" name="picture2" accept="image/*" onchange="previewImages()" /> +
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" /> +
 
                         </label></span>
 
@@ -62,28 +62,28 @@
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture3" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture4" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture5" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label></span>
 
                     <span>
                         <img src="" alt="">
                         <button onclick="removeImage(this)" type="button">-</button>
                         <label class="custom-file-upload">
-                            <input type="file" name="picture6" accept="image/*" onchange="previewImages()" />+
+                            <input type="file" name="picture" accept="image/*" onchange="previewImages()" />+
                         </label>
                     </span>
 
@@ -113,8 +113,8 @@
                     <label for="male"> Male</label>
                     <input type="checkbox" id="female" name="oriented" value="female">
                     <label for="female"> Female</label>
-                    <input type="checkbox" id="everyone" name="oriented" value="everyone">
-                    <label for="everyone"> Everyone</label>
+                    <input type="checkbox" id="others" name="oriented" value="others">
+                    <label for="everyone"> Others</label>
                 </div>
                 <div class="specification">
                     <p class="option-title">Interest in relationship</p>
