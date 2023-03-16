@@ -99,7 +99,7 @@ body {
 
 }
 
-input[type="button"] {
+input[type="submit"] {
   background-color: #ff4560;
   color: #fff;
   padding: 10px 20px;

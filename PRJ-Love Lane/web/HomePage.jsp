@@ -23,7 +23,7 @@
 		<img src="images/LovelaneLogo.png" alt="Logo">
 		<ul>
 			<p>Already have account?</p>
-			<li><a href="">Login</a></li>
+			<li><a href="Login.jsp">Login</a></li>
 		</ul>
 	</nav>
 
@@ -41,8 +41,7 @@
 	</div>
 </div>
 <div class="input-form">
-<!--	<input type="button" value="Join LoveLane">-->
-        <a href="SignUp.jsp">Join LoveLane</a>
+	<input type="button" onclick="location.href = 'SignUp.jsp';" value="Join LoveLane">
 
 </div>
 
