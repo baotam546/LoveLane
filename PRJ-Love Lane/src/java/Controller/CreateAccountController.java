@@ -56,6 +56,7 @@ public class CreateAccountController extends HttpServlet {
         
         request.getRequestDispatcher("CreateAccount.jsp").forward(request, response);
         
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

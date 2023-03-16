@@ -26,7 +26,7 @@ public class userAccountDAO {
     }
     
     public void insertUser(String firstName, String lastName, String email, String password
-    ,int genderID, String location, String DOB, String phone){
+    ,int genderID, String location, String DOB,String description){
         
         
         try {
@@ -37,10 +37,11 @@ public class userAccountDAO {
             ps.setString(2, lastName);
             ps.setString(3, email);
             ps.setString(4, password);
-            ps.setInt(5,genderID);
-            ps.setString(6, location);
+            ps.setString(5,description);
+            ps.setInt(6, genderID);
             ps.setString(7, DOB);
-            ps.setString(8, phone);
+            ps.setString(8, location);
+
             ps.executeUpdate();
             ps.close();
             conn.close();
@@ -65,10 +66,9 @@ public class userAccountDAO {
                 String description = rs.getString(6);
                 int gender = rs.getInt(7);
                 Date dob = rs.getDate(8);
-                String phone= rs.getString(9);
-                int location = rs.getInt(10);
+                String location = rs.getString(9);
                 
-                userAccountDTO ua = new userAccountDTO(id, firstName, lastName, email, password, description, gender, dob, location, phone);
+                userAccountDTO ua = new userAccountDTO(id, firstName, lastName, email, password, description, gender, dob, location);
                 userList.add(ua);
                 rs.close();
                 ps.close();
