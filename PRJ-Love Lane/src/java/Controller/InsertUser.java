@@ -64,7 +64,8 @@ public class InsertUser extends HttpServlet {
             String [] photo = request.getParameterValues("picture");
             String [] interest = request.getParameterValues("interest");
             userAccountDAO UserDAO = new userAccountDAO();
-            UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
+            userAccountDTO UserDTO = (UserDTO) UserDAO.insertUser(firstName, lastName, email, password, genderID, location, birthdayS, description);
+            request.setAttribute("currentUser", user);
             
     }
 

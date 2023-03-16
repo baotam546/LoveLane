@@ -20,15 +20,15 @@ public class userAccountDTO {
     String password;
     String description;
     int gender_ID;
-    Date DOB;
+    String DOB;
     String location;
 
 
     public userAccountDTO() {
     }
 
-    public userAccountDTO(int account_ID, String first_name, String last_name, String email, String password, String description, int gender_ID, Date DOB, String location) {
-        this.account_ID = account_ID;
+    public userAccountDTO( String first_name, String last_name, String email, String password, String description, int gender_ID, String DOB, String location) {
+        
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
@@ -40,9 +40,7 @@ public class userAccountDTO {
 
     }
 
-    public userAccountDTO(String firstName, String lastName, String email, String pass, String description, String gender_ID, Date DOB, String phone, String location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
   
 
@@ -95,11 +93,11 @@ public class userAccountDTO {
     }
 
  
-    public Date getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
