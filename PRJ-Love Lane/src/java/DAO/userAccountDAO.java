@@ -151,6 +151,8 @@ public class userAccountDAO {
             "from User_Account where id = ?";
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            
             ResultSet rs = ps.executeQuery();
             String firstName = rs.getString(1);
             String lastName = rs.getString(2);
@@ -172,9 +174,28 @@ public class userAccountDAO {
         return null;
     }
     
+    public int getUserIDByEmail(String email){
+        try {
+            String sql="select account_ID "+
+            " from User_Account where email = ?";
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+                return rs.getInt(1);
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+    
     public static void main(String[] args) {
             Connection conn = DBUtils.getConnection();
             System.out.println(conn==null);
-            
+            userAccountDAO dao = new userAccountDAO();
+            System.out.println(dao.getUserIDByEmail("mi@k"));
     }
 }

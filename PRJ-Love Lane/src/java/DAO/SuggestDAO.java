@@ -18,18 +18,22 @@ import java.util.List;
  * @author DELL
  */
 public class SuggestDAO {
+    private int NORMAL_POINT=10;
+    private int BIG_POINT=30;
+    
 
     public void suggest() {
         int point = 0;
 
         List<Integer> SO, Blocks, Blocked;
         List<String> Hobbies, Relation;
-        int Location;
+        String Location;
 
         List<Integer> UsersID = listAccountsID();
+        if(UsersID==null) return;
 
         List<String> otherHobbies, otherRelation;
-        int otherLocation;
+        String otherLocation;
 
         for (int currentID : UsersID) {
             System.out.println(currentID);
@@ -54,8 +58,8 @@ public class SuggestDAO {
                 point += calculatePointString(Relation, otherRelation);
 
                 otherLocation = getLocation(otherID);
-                if (Location == otherLocation) {
-                    point += 30;
+                if (Location.equals(otherLocation)) {
+                    point += BIG_POINT;
                 }
 
                 insertToSuggest(currentID, otherID, point);
@@ -68,7 +72,7 @@ public class SuggestDAO {
         for (int o1 : list1) {
             for (int o2 : list2) {
                 if (o1 == o2) {
-                    point += 10;
+                    point += NORMAL_POINT;
                 }
             }
         }
@@ -80,7 +84,7 @@ public class SuggestDAO {
         for (String o1 : list1) {
             for (String o2 : list2) {
                 if (o1.equals(o2)) {
-                    point += 10;
+                    point += NORMAL_POINT;
                 }
             }
         }
@@ -338,8 +342,8 @@ public class SuggestDAO {
         return UserRelation;
     }
 
-    public int getLocation(int id) {
-        String BlockSQL = "select Location_ID\n"
+    public String getLocation(int id) {
+        String BlockSQL = "select Location\n"
                 + "from dbo.User_Account\n"
                 + "where account_ID = ?";
         try {
@@ -350,7 +354,7 @@ public class SuggestDAO {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt(1);
+                return rs.getString(1);
             }
             rs.close();
             ps.close();
@@ -358,7 +362,7 @@ public class SuggestDAO {
         } catch (SQLException ex) {
             System.out.println("Query Student error!" + ex.getMessage());
         }
-        return 0;
+        return null;
     }
 
     public static void main(String[] args) throws InterruptedException {

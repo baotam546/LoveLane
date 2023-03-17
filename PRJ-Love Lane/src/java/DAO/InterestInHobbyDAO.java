@@ -21,50 +21,54 @@ import java.util.logging.Logger;
  * @author ACER
  */
 public class InterestInHobbyDAO {
-    public void insertHobby(String hobbyName,int accountID){
+
+    public void insertHobby(String[] hobbyName, int accountID) {
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(Query.INSERT_IIH);
-            
-            ps.setString(1, hobbyName);
-            ps.setInt(2, accountID);
-            ps.executeUpdate();
-            ps.close();
+            for (String hobby : hobbyName) {
+                PreparedStatement ps = conn.prepareStatement(Query.INSERT_IIH);
+
+                ps.setString(1, hobby);
+                ps.setInt(2, accountID);
+                ps.executeUpdate();
+                ps.close();
+            }
             conn.close();
         } catch (Exception e) {
         }
     }
-    public ArrayList<InterestInHobbyDTO> getUserListHobby(){
+
+    public ArrayList<InterestInHobbyDTO> getUserListHobby() {
         ArrayList<InterestInHobbyDTO> hobbyList = new ArrayList<>();
-       
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(Query.LIST_SINGLE_USER_HOBBY);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
                 int user_ID = rs.getInt(3);
-                
+
                 InterestInHobbyDTO userHobby = new InterestInHobbyDTO(id, user_ID, name);
                 hobbyList.add(userHobby);
                 rs.close();
                 ps.close();
                 conn.close();
-                
+
             }
             return hobbyList;
         } catch (SQLException ex) {
             Logger.getLogger(InterestInHobbyDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-}
-    
-    public void deleteHobby(String hobbyName,int accountID){
+    }
+
+    public void deleteHobby(String hobbyName, int accountID) {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(Query.DELETE_IIH);
-            
+
             ps.setString(1, hobbyName);
             ps.setInt(2, accountID);
             ps.executeUpdate();
@@ -73,8 +77,7 @@ public class InterestInHobbyDAO {
         } catch (SQLException ex) {
             Logger.getLogger(photoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
 
 }

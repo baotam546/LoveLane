@@ -15,17 +15,15 @@ public class photoDTO {
     int photoID;
     int accountID;
     String link;
-    String status;
     Date time_added;
 
     public photoDTO() {
     }
 
-    public photoDTO( int accountID, String link, String status, Date time_added) {
+    public photoDTO( int accountID, String link, Date time_added) {
         
         this.accountID = accountID;
         this.link = link;
-        this.status = status;
         this.time_added = time_added;
     }
 
@@ -51,14 +49,6 @@ public class photoDTO {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getTime_added() {

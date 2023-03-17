@@ -35,6 +35,10 @@
         <servlet-name>InsertMore</servlet-name>
         <servlet-class>Controller.InsertMore</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadPhoto</servlet-name>
+        <servlet-class>Controller.UploadPhoto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signUpServlet</servlet-name>
         <url-pattern>/signUp</url-pattern>
@@ -66,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>InsertMore</servlet-name>
         <url-pattern>/InsertMore</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadPhoto</servlet-name>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

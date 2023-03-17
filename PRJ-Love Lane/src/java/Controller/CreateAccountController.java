@@ -7,15 +7,13 @@ package Controller;
 
 import DAO.HobbyDAO;
 import DAO.LocationDAO;
-import DAO.SexOriented;
-import DAO.userAccountDAO;
+import DAO.RelationDAO;
 import DTO.HobbyDTO;
 import DTO.LocationDTO;
+import DTO.RelationDTO;
 import DTO.userAccountDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,6 +51,10 @@ public class CreateAccountController extends HttpServlet {
         LocationDAO locationDAO = new LocationDAO();
         ArrayList<LocationDTO> locationList = locationDAO.getLocationList();
         request.setAttribute("locationList", locationList);
+        
+        RelationDAO relationDAO = new RelationDAO();
+        ArrayList<RelationDTO> relationList = relationDAO.getRelationList();
+        request.setAttribute("relationList", relationList);
         
         request.getRequestDispatcher("CreateAccount.jsp").forward(request, response);
         

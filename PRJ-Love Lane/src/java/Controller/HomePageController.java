@@ -5,22 +5,23 @@
  */
 package Controller;
 
+import DTO.userAccountDTO;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ACER
  */
-@WebServlet(name = " HomePagController ", urlPatterns = {"/HomePagController"})
-@MultipartConfig
 public class HomePageController extends HttpServlet {
 
     /**
@@ -35,19 +36,14 @@ public class HomePageController extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String filename;
-            File myObj = new File("filename.png");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+        HttpSession session = request.getSession(false);
+        String id =(String) session.getAttribute("currentUserID");
+        userAccountDTO currentUser = (userAccountDTO) session.getAttribute("currentUser");
+        if(id==null || currentUser==null){
+            response.sendRedirect("HomePage.jsp");
         }
-
+        RequestDispatcher rd = request.getRequestDispatcher("UserPage.jsp");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

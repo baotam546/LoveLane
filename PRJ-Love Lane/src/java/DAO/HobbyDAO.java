@@ -46,6 +46,8 @@ public class HobbyDAO {
         }
         return hobbyList;
     }
+    
+    
     public static void main(String[] args) {
         HobbyDAO DAO = new HobbyDAO();
         ArrayList<HobbyDTO> hobbyList = DAO.getHobbyList();

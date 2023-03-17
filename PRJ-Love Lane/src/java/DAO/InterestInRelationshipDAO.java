@@ -18,29 +18,30 @@ import java.util.logging.Logger;
  * @author ACER
  */
 public class InterestInRelationshipDAO {
-    public void insertRelationship(int userID, String relationName){
+
+    public void insertRelationship(int userID, String[] relationName) {
         try {
             Connection conn = DBUtils.getConnection();
-            PreparedStatement ps = conn.prepareStatement(Query.INSERT_IIR);
-            
-            ps.setInt(1, userID);
-            ps.setString(2, relationName);
-            ps.executeUpdate();
-            ps.close();
+            for (String relation : relationName) {
+                PreparedStatement ps = conn.prepareStatement(Query.INSERT_IIR);
+
+                ps.setInt(1, userID);
+                ps.setString(2, relation);
+                ps.executeUpdate();
+                ps.close();
+            }
             conn.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-    
-    
-    
-    public void updateRelationship(String relationName, int userID){
-        
+
+    public void updateRelationship(String relationName, int userID) {
+
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(Query.UPDATE_IIR);
-            
+
             ps.setString(1, relationName);
             ps.setInt(2, userID);
             ps.executeUpdate();
@@ -50,10 +51,10 @@ public class InterestInRelationshipDAO {
             ex.printStackTrace();
         }
     }
-    
-    public void deleteRelationship(int userID, String relationName){
+
+    public void deleteRelationship(int userID, String relationName) {
         try {
-            Connection conn =DBUtils.getConnection();
+            Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(Query.DELETE_IIR);
             ps.setInt(1, userID);
             ps.setString(2, relationName);

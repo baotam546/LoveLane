@@ -36,21 +36,23 @@ public class SignUpController extends HttpServlet {
             String user = request.getParameter("email");
             String password = request.getParameter("password");
             
-            if (user == null || password == null ){
+            if (user == null || password == null || user == "" || password == ""){
 
                     request.setAttribute("error", "Username and password can not be empty");
-                    request.getRequestDispatcher("/SignUpController").forward(request, response);     
+                    request.getRequestDispatcher("SignUp.jsp").forward(request, response);     
             }else{
                 userAccountDAO userDAO = new userAccountDAO();
                 userAccountDTO userDTO = userDAO.login(user, password);
                 
                 if(userDTO != null){
                     request.setAttribute("error", "this username has been taken");
-                    request.getRequestDispatcher("SignUpController").forward(request, response);
+                    request.getRequestDispatcher("SignUp.jsp").forward(request, response);
                 }else{
                     HttpSession session = request.getSession(true);
-                    userDTO = new userAccountDTO();
-                        session.setAttribute("usersession", userDTO);                   
+                    userAccountDTO userA = new userAccountDTO();
+                    userA.setEmail(user);
+                    userA.setPassword(password);
+                        session.setAttribute("usersession", userA);                   
                         response.sendRedirect("CreateAccountController");
                 }
             }
