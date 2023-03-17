@@ -39,6 +39,14 @@
         <servlet-name>UploadPhoto</servlet-name>
         <servlet-class>Controller.UploadPhoto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserPageController</servlet-name>
+        <servlet-class>Controller.UserPageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>Controller.LogOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signUpServlet</servlet-name>
         <url-pattern>/signUp</url-pattern>
@@ -74,6 +82,14 @@
     <servlet-mapping>
         <servlet-name>UploadPhoto</servlet-name>
         <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserPageController</servlet-name>
+        <url-pattern>/UserPageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/LogOutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
