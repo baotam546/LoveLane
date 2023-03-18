@@ -37,13 +37,15 @@ public class HomePageController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        String id =(String) session.getAttribute("currentUserID");
+        int id =(Integer) session.getAttribute("currentUserID");
         userAccountDTO currentUser = (userAccountDTO) session.getAttribute("currentUser");
-        if(id==null || currentUser==null){
+        if(id==0 || currentUser==null){
             response.sendRedirect("HomePage.jsp");
         }
-        RequestDispatcher rd = request.getRequestDispatcher("UserPage.jsp");
-        rd.forward(request, response);
+        else{
+            RequestDispatcher rd = request.getRequestDispatcher("UserPage.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

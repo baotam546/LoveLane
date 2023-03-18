@@ -64,8 +64,9 @@ public class LoginController extends HttpServlet {
 
                     if (userDTO != null){                        
                         HttpSession session = request.getSession(true);
-                        session.setAttribute("usersession", userDTO);                   
-                        response.sendRedirect("HomePageController");
+                        userDTO = userDAO.getUserByID(userDAO.getUserIDByEmail(user));
+                        session.setAttribute("currentUser", userDTO);                   
+                        response.sendRedirect("UserPage.jsp");
 
                     }else if(userDTO==null){      
                         request.setAttribute("error", "Wrong username or password");            

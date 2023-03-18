@@ -134,7 +134,7 @@ public class InsertUser extends HttpServlet {
         session = request.getSession(true);
         session.setAttribute("currentUserID", user_id);
         session.setAttribute("currentUser", userAccount);
-        response.sendRedirect("UserPage.jsp");
+        response.sendRedirect("HomePageController");
         
         //insert image to disk
         for (int i = 1; i <= 6; i++) {
