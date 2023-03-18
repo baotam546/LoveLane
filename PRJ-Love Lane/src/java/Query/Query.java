@@ -53,7 +53,7 @@ public class Query {
     public static String DELETE_BLOCK = "DELETE FROM block WHERE account_ID_send =?, account_ID_receive =?";
 
     // Photo
-    public static String INSERT_PHOTO = "INSERT INTO User_Photo(account_ID, link) VALUEs(?,?)";
+    public static String INSERT_PHOTO = "INSERT INTO User_Photo(account_ID, link,time_added) VALUEs(?,?,?)";
     public static String DELETE_PHOTO = "DELETE FROM User_Photo where link = ?";
     public static String UPDATE_PHOTO = "UPDATE User_Photo SET time_added = ?, status = ? WHERE link = ?";
 

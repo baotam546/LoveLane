@@ -154,6 +154,7 @@ public class userAccountDAO {
             ps.setInt(1, id);
             
             ResultSet rs = ps.executeQuery();
+            if(rs.next()){
             String firstName = rs.getString(1);
             String lastName = rs.getString(2);
             String description =rs.getString(3);
@@ -167,7 +168,7 @@ public class userAccountDAO {
             userAccountDTO us= new userAccountDTO(firstName, lastName, email, pass, description, gender_ID, DOB+"",location);
             listUser.add(us);
             return us;
-            
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

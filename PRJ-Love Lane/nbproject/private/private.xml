@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/nbproject/build-impl.xml</file>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/src/java/DAO/userAccountDAO.java</file>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/src/java/DTO/userAccountDTO.java</file>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/src/java/Controller/InsertUser.java</file>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/web/WEB-INF/web.xml</file>
-            <file>file:/F:/prj%20pr/PRJ-Love%20Lane/web/META-INF/context.xml</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/web/HomePage.jsp</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/src/java/Controller/UserPageController.java</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/web/WEB-INF/web.xml</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/src/java/Controller/LogOutServlet.java</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/src/java/DAO/SuggestDAO.java</file>
+            <file>file:/D:/PRJ-LoveLane/prj301-se1753-02/PRJ-Love%20Lane/web/UserPage.jsp</file>
         </group>
     </open-files>
 </project-private>
