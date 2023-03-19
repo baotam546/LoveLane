@@ -1,4 +1,8 @@
 #  💓LoveLane - Assigment PRJ301
+## Team Members
+- Đỗ Minh Trí SE173029
+- Đỗ Nguyễn Bảo Tâm
+- Nguyễn Quang Khanh
 ## Requirement
 ### 🔥Name of the system
 ![image](/images/Lovelane.png)
@@ -11,8 +15,7 @@ The goal of LoveLane is to bring together people who are looking for love, frien
 - Create account
 - Edit profile
 - View Profile
-- Suggest people based on point with the same hobbies
-
+- Suggest people based on point calculated by hobbies, sex oriented, location and type of relationship
 - Match people who like each others
 ## 🚀Design
 ### :arrow_forward:**SiteMap** 
