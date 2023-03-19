@@ -6,21 +6,25 @@
 package DAO;
 
 import DBUtils.DBUtils;
+import DTO.HobbyDTO;
+import Query.Query;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author DELL
  */
 public class SuggestDAO {
-    private int NORMAL_POINT=10;
-    private int BIG_POINT=30;
-    
+
+    private final int NORMAL_POINT = 10;
+    private final int BIG_POINT = 30;
 
     public void suggest() {
         int point = 0;
@@ -30,7 +34,9 @@ public class SuggestDAO {
         String Location;
 
         List<Integer> UsersID = listAccountsID();
-        if(UsersID==null) return;
+        if (UsersID == null) {
+            return;
+        }
 
         List<String> otherHobbies, otherRelation;
         String otherLocation;
@@ -65,6 +71,29 @@ public class SuggestDAO {
                 insertToSuggest(currentID, otherID, point);
             }
         }
+    }
+
+    public List<Integer> getSuggestionList(int userID) {
+        List<Integer> suggestList = null;
+        try {
+            suggestList = new ArrayList<>();
+
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(Query.LIST_SUGGEST);
+            ps.setInt(1, userID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                suggestList.add(id);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return suggestList;
+        } catch (SQLException ex) {
+            Logger.getLogger(HobbyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public int calculatePoint(List<Integer> list1, List<Integer> list2) {
@@ -376,9 +405,13 @@ public class SuggestDAO {
 //        System.out.println(dao.FilterBlock(dao.listAccountsIDExcept(3), dao.listBlocks(3)));
 //        System.out.println(dao.listAccountsIDExcept(3));
 //        System.out.println(dao.insertToSuggest(3, 5, 50));
+
+
         while (true) {
             dao.suggest();
             Thread.sleep(60000);
         }
+
+//        System.out.println(dao.getSuggestionList(32));
     }
 }

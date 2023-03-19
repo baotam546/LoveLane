@@ -8,7 +8,6 @@ package DAO;
 import DBUtils.DBUtils;
 import DTO.photoDTO;
 import Query.Query;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -97,5 +96,32 @@ public class photoDAO {
         return null;
     }
     
+    public ArrayList<String> getUserPhotoLinkByID(int id){
+        ArrayList<String> links = new ArrayList<>();
+        try {
+            ArrayList<photoDTO> photoList = new ArrayList<>();
+            String sql="SELECT link FROM User_Photo WHERE account_ID =?";
+            
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                String photoID = rs.getString(1);
+//                String status = rs.getString(4);
+                
+                links.add(photoID);
+            }
+            return links;
+        } catch (SQLException ex) {
+            Logger.getLogger(photoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
+    public static void main(String[] args) {
+        photoDAO dao = new photoDAO();
+        System.out.println(dao.getUserPhotoLinkByID(35));
+    }
 }

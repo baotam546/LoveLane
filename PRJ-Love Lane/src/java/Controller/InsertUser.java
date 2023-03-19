@@ -10,6 +10,7 @@ import DAO.InterestInRelationshipDAO;
 import DAO.LocationDAO;
 import DAO.RelationDAO;
 import DAO.SexOriented;
+import DAO.SuggestDAO;
 import DAO.photoDAO;
 import DAO.userAccountDAO;
 import DTO.userAccountDTO;
@@ -129,6 +130,9 @@ public class InsertUser extends HttpServlet {
         for(String p : Photos){
             PhotoDAO.insertPhoto(user_id, user_id+"_"+p);
         }
+        //run suggestion for user
+        SuggestDAO suggest = new SuggestDAO();
+        suggest.suggest();
         
         //Create new user session
         session = request.getSession(true);

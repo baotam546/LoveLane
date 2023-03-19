@@ -5,14 +5,16 @@
  */
 package Controller;
 
+import DAO.SuggestDAO;
+import DAO.photoDAO;
+import DAO.userAccountDAO;
 import DTO.userAccountDTO;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,18 +35,57 @@ public class HomePageController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        int id =(Integer) session.getAttribute("currentUserID");
+        int id = (Integer) session.getAttribute("currentUserID");
         userAccountDTO currentUser = (userAccountDTO) session.getAttribute("currentUser");
-        if(id==0 || currentUser==null){
+        if (id == 0 || currentUser == null) {
             response.sendRedirect("HomePage.jsp");
-        }
-        else{
+        } else {
+            int viewNumber = 0;
+            String action = request.getParameter("action");
+            if (session.getAttribute("viewNumber") == null) {
+                session.setAttribute("viewNumber", viewNumber);
+            }
+            if (session.getAttribute("viewNumber") != null && action != null) {
+                viewNumber = (int) session.getAttribute("viewNumber");
+                viewNumber++;
+            }
+            //get users id of suggestion
+            SuggestDAO suggestDAO = new SuggestDAO();
+            List<Integer> userIDList = suggestDAO.getSuggestionList(id);
+            //get users list by their id
+            List<userAccountDTO> userList = new ArrayList<>();
+            for (int i : userIDList) {
+                userAccountDAO userDAO = new userAccountDAO();
+                userAccountDTO user = userDAO.getUserByID(i);
+                userList.add(user);
+            }
+            if (viewNumber >= userIDList.size()) {
+                request.setAttribute("error", "You reached the end :((");
+                request.getRequestDispatcher("theEnd.jsp").forward(request, response);
+            }
+            //get photos based on view number
+            photoDAO photoDAO = new photoDAO();
+            
+            List<String> photoLinks = photoDAO.getUserPhotoLinkByID(userIDList.get(viewNumber));
+            //get the user infomation
+            userAccountDTO user = userList.get(viewNumber);
+            //Update view number
+            session.setAttribute("viewNumber", viewNumber);
+            
+            
+            session.setAttribute("userInfo", user);
+            session.setAttribute("links", photoLinks);
+
+            PrintWriter p = response.getWriter();
+            p.println(viewNumber);
+            p.println(user);
+            p.println(photoLinks);
             RequestDispatcher rd = request.getRequestDispatcher("UserPage.jsp");
             rd.forward(request, response);
+
         }
     }
 

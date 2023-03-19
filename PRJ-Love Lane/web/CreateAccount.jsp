@@ -25,7 +25,7 @@
         <hr>
         <div class="create-account">
             <h2 id="page-name">Create Account</h2>
-            <form action="InsertUser" method="post" enctype='multipart/form-data'>
+            <form action="InsertUser" method="post" enctype='multipart/form-data' accept-charset="utf-8">
                 <div class="left-input">
                     <label for="Name">First Name</label><br>
                     <input type="text" name="firstName" required><br>

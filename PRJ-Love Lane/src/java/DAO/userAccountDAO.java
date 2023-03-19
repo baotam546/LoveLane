@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import DTO.userAccountDTO;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -147,7 +148,6 @@ public class userAccountDAO {
     }
 
     public userAccountDTO getUserByID(int id) {
-        ArrayList<userAccountDTO> listUser = new ArrayList<>();
         try {
             String sql = "select first_name, last_name, description, gender_ID, DOB, Location, email, password "
                     + " from User_Account where account_id = ?";
@@ -201,5 +201,6 @@ public class userAccountDAO {
         System.out.println(conn == null);
         userAccountDAO dao = new userAccountDAO();
         System.out.println(dao.getUserByID(dao.getUserIDByEmail("mi@k")));
+        System.out.println(File.separator);
     }
 }

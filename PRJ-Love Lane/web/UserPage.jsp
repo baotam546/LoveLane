@@ -1,3 +1,6 @@
+<%@page import="java.io.File"%>
+<%@page import="java.util.List"%>
+<%@page import="DTO.userAccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -315,9 +318,9 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-login.html">
+                    <a class="nav-link collapsed" href="LogOutServlet">
                         <i class="bi bi-box-arrow-in-right"></i>
-                        <span>Login</span>
+                        <span>Logout</span>
                     </a>
                 </li><!-- End Login Page Nav -->
 
@@ -374,28 +377,52 @@
                                 </div>
                                 <div class="tbgwrap">
                                     <div class="tphoto">
-                                        <div class="container">
+                                        
+                                        <%! int viewNumber;
+                                            List<String> photoLinks;
+                                            userAccountDTO userInfo;
+                                        %>
+                                        <%viewNumber = (int) session.getAttribute("viewNumber");
+                                            if (session.getAttribute("viewNumber") == null) {
+                                                response.sendRedirect("HomePageController");
+                                            }
+                                            userInfo = (userAccountDTO) session.getAttribute("userInfo");
+                                            photoLinks = (List<String>) session.getAttribute("links");
+                                            if (photoLinks.isEmpty()) {
+                                                request.getRequestDispatcher("HomePageController").forward(request, response);
+                                            }
+                                        %>
+                                        <%if(viewNumber>photoLinks.size()){%>
+                                            <h1>${error}</h1>
+                                        <%}%>
+                                        <div class="">
                                             <div id="myCarousel" class="carousel slide" data-interval="false">
                                                 <!-- Indicators -->
                                                 <ol class="carousel-indicators">
                                                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                                        <%for (int i = 1; i < photoLinks.size(); i++) {
+                                                                out.println("<li data-target='#myCarousel' data-slide-to='" + photoLinks.get(i) + "'></li>");
+                                                            }%>
+                                                    <!--                                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                                                                                        <li data-target="#myCarousel" data-slide-to="2"></li>-->
                                                 </ol>
 
                                                 <!-- Wrapper for slides -->
                                                 <div class="carousel-inner">
                                                     <div class="item active">
-                                                        <img src="https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q" alt="Los Angeles" style="width:100%;">
-                                                    </div>
 
-                                                    <div class="item">
-                                                        <img src="https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q" alt="Chicago" style="width:100%;">
+                                                        <img src="<%=Query.Query.LOAD_FILE_PATH + File.separator + photoLinks.get(0) + ".png"%>" alt="Los Angeles" style="width: 490px; height: 350px;">
                                                     </div>
-
-                                                    <div class="item">
-                                                        <img src="https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q" alt="New york" style="width:100%;">
-                                                    </div>
+                                                    <%for (int i = 1; i < photoLinks.size(); i++) {
+                                                                out.println("<div class='item'> <img src ='" + Query.Query.LOAD_FILE_PATH + File.separator + photoLinks.get(i) + ".png'" + "alt='Chicago' style='width:490px; height: 350px;'></div >");
+                                                            }%>
+                                                    <!--                                                    <div class="item">
+                                                                                                            <img src="https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q" alt="Chicago" style="width:100%;">
+                                                                                                        </div>
+                                                    
+                                                                                                        <div class="item">
+                                                                                                            <img src="https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q" alt="New york" style="width:100%;">
+                                                                                                        </div>-->
                                                 </div>
 
                                                 <!-- Left and right controls -->
@@ -414,11 +441,11 @@
                                                                                 <div class="tinfo"><i class="fa fa-book" aria-hidden="true"> 0</i><i class="fa fa-users" aria-hidden="true"> 0</i></div>-->
                                     </div>
                                     <div class="tcontrols">
-                                        <p style="position: relative; top: 42px; left: 12px;">Daniel, 27Year</p>
-                                        <p style="    position: relative; top: 36px; left: 13px;">Web Developer</p>
-                                        <a href=""><div class="tno"><i class="fa fa-times" style="font-size:48px; position: absolute; top: -9px; left: -4px; color: red"  aria-hidden="true"></i></div></a>
+                                        <h3 style="position: relative; top: 42px; left: 12px;">${userInfo.first_name} ${userInfo.last_name}</h3>
+                                        <h4 style="   position: relative; top: 36px; left: 13px;"><b>Description:</b> ${userInfo.description}</h4>
+                                        <a href="?action=dislike"><div class="tno"><i class="fa fa-times" style="font-size:48px; position: absolute; top: -9px; left: -4px; color: red"  aria-hidden="true"></i></div></a>
                                         <a href=""><div class="ti"><i class="fa fa-info-circle" style="font-size:48px; position: absolute; top: -8px; left: -4px;" aria-hidden="true"></i></div></a>
-                                        <a href=""><div class="tyes"><i class="fa fa-heart" style="font-size:48px;" aria-hidden="true"></i></div></a>
+                                        <a href="?action=like"><div class="tyes"><i class="fa fa-heart" style="font-size:48px;" aria-hidden="true"></i></div></a>
                                     </div>
                                 </div>
                                 <div class="credit"><a href="http://themakery.jcink.net">LOVELAND</a></div>

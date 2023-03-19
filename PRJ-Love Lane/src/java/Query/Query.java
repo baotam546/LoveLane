@@ -11,7 +11,8 @@ package Query;
  */
 public class Query {
     //Upload file path
-    public static String UPLOAD_FILE_PATH = "F:\\prj pr\\PRJ-Love Lane\\upload";
+    public static String UPLOAD_FILE_PATH = "F:\\prj pr\\PRJ-Love Lane\\web\\upload";
+    public static String LOAD_FILE_PATH = "upload";
 
     // User Account
     public static String INSERT_USER_ACCOUNT = "insert into User_Account (first_name,last_name,email,password,description, gender_ID,DOB,Location) values(?,?,?,?,?,?,?,?)";
@@ -53,8 +54,9 @@ public class Query {
     public static String DELETE_BLOCK = "DELETE FROM block WHERE account_ID_send =?, account_ID_receive =?";
 
     // Photo
-    public static String INSERT_PHOTO = "INSERT INTO User_Photo(account_ID, link,time_added) VALUEs(?,?,?)";
+    public static String INSERT_PHOTO = "INSERT INTO User_Photo(account_ID, link) VALUEs(?,?)";
     public static String DELETE_PHOTO = "DELETE FROM User_Photo where link = ?";
     public static String UPDATE_PHOTO = "UPDATE User_Photo SET time_added = ?, status = ? WHERE link = ?";
-
+    // Suggest
+    public static String LIST_SUGGEST = "SELECT account_id_received FROM dbo.Suggest WHERE account_id_sent = ? order by point desc";
 }

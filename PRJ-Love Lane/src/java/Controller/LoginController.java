@@ -8,7 +8,6 @@ package Controller;
 import DAO.userAccountDAO;
 import DTO.userAccountDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,49 +32,54 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            /* TODO output your page here. You may use following sample code. */
+        /* TODO output your page here. You may use following sample code. */
+        try {
             String action = request.getParameter("action");
             String user = request.getParameter("user");
             String password = request.getParameter("password");
-       
+
 //            RequestDispatcher rd1 = request.getRequestDispatcher("menu.html");
 //            rd1.include(request, response);
-            
-            if (action != null && action.equals("logout")){
+            if (action != null && action.equals("logout")) {
                 HttpSession session = request.getSession(false);
-                
-                if (session != null)
-                    session.invalidate();  
-                
-            }else{
-                
+
+                if (session != null) {
+                    session.invalidate();
+                }
+
+            } else {
+
                 log("Debug user : " + user + " " + password);
 
-                if (user == null && password == null ){
+                if (user == null && password == null) {
 
                     log("Debug user : Go to login " + user + " " + password);
                     RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
                     rd.forward(request, response);
-                }else if(user != null && password != null){
+                } else if (user != null && password != null) {
 
                     log("Debug user : Go to here " + user + " " + password);
                     userAccountDAO userDAO = new userAccountDAO();
-                    userAccountDTO userDTO = userDAO.login(user, password);            
+                    userAccountDTO userDTO = userDAO.login(user, password);
 
-                    if (userDTO != null){                        
+                    if (userDTO != null) {
                         HttpSession session = request.getSession(true);
                         userDTO = userDAO.getUserByID(userDAO.getUserIDByEmail(user));
-                        session.setAttribute("currentUser", userDTO);                   
-                        response.sendRedirect("UserPage.jsp");
+                        session.setAttribute("currentUserID", userDAO.getUserIDByEmail(user));
+                        session.setAttribute("currentUser", userDTO);
+                        response.sendRedirect("HomePageController");
 
-                    }else if(userDTO==null){      
-                        request.setAttribute("error", "Wrong username or password");            
+                    } else if (userDTO == null) {
+                        request.setAttribute("error", "Wrong username or password");
                         RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
                         rd.forward(request, response);
-                    }              
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
