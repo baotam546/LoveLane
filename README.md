@@ -6,7 +6,7 @@
 | Name  | ID  |
 |---|---|
 | Đỗ Minh Trí  | SE173029  |
-| Đỗ Nguyễn Bảo Tâm |  SE173029 |
+| Đỗ Nguyễn Bảo Tâm |  SE173314 |
 | Nguyễn Quang Khanh  |  SE173029 |
 ## Requirement
 ### 🔥Name of the system
